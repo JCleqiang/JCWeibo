@@ -18,7 +18,8 @@ class JCHomeViewController: JCVisitorTableViewController {
     
     func setupNav() {
         navigationItem.titleView = filterNavBarButton
-        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(imageName:"navigationbar_friendattention", target: self, action: #selector(leftBtnClick))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(imageName:"navigationbar_pop", target: self, action: #selector(rightBtnClick))
     }
     
     func filterNavBarButtonDidClick() {
@@ -27,6 +28,15 @@ class JCHomeViewController: JCVisitorTableViewController {
         popMenuTool.delegate = self
         popMenuTool.show(from: filterNavBarButton)
     }
+    
+    @objc private func leftBtnClick() {
+        JCLog(message: "-----")
+    }
+    @objc private func rightBtnClick() {
+        let qrCode = JCMainNavigationController(rootViewController: JCQRCodeViewController())
+        present(qrCode, animated: true, completion: nil)
+    }
+
     
     lazy var filterNavBarButton: NSFilterNavBarButton = {
         let filterNavBarButton = NSFilterNavBarButton()

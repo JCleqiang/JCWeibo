@@ -45,8 +45,8 @@
     
     self.fromViewCenterY = newFrame.origin.y;
     
-    // 设置backgroundView在fromView的右下方
-    self.backgroundView.jc_right = CGRectGetMaxX(newFrame) + _offset.x;
+    // 设置backgroundView在fromView的正下方
+    self.backgroundView.jc_centerX = newFrame.origin.x + (newFrame.size.width * 0.5) + _offset.x;
     
     self.backgroundView.jc_y = CGRectGetMaxY(newFrame) + _offset.y;
     self.backgroundView.image = [UIImage imageNamed:@"popover_background.png"];

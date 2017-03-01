@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B46A1101E66DF0000EB8534 /* JCQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B46A10F1E66DF0000EB8534 /* JCQRCodeViewController.swift */; };
+		2B46A1121E66DF5500EB8534 /* JCQRCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B46A1111E66DF5500EB8534 /* JCQRCodeViewController.xib */; };
+		2B46A1141E66E53D00EB8534 /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B46A1131E66E53D00EB8534 /* UIBarButtonItem+Extension.swift */; };
 		2B4B21E11E66A11400B6909F /* JCHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B21E01E66A11400B6909F /* JCHomeViewController.swift */; };
 		2B4B21E31E66A12500B6909F /* JCDiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B21E21E66A12500B6909F /* JCDiscoverViewController.swift */; };
 		2B4B21E51E66A13000B6909F /* JCMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B21E41E66A13000B6909F /* JCMeViewController.swift */; };
@@ -34,6 +37,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B46A10F1E66DF0000EB8534 /* JCQRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCQRCodeViewController.swift; sourceTree = "<group>"; };
+		2B46A1111E66DF5500EB8534 /* JCQRCodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JCQRCodeViewController.xib; sourceTree = "<group>"; };
+		2B46A1131E66E53D00EB8534 /* UIBarButtonItem+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extension.swift"; sourceTree = "<group>"; };
 		2B4B21E01E66A11400B6909F /* JCHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCHomeViewController.swift; sourceTree = "<group>"; };
 		2B4B21E21E66A12500B6909F /* JCDiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCDiscoverViewController.swift; sourceTree = "<group>"; };
 		2B4B21E41E66A13000B6909F /* JCMeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCMeViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +95,15 @@
 				5AA15672D326CE4D0002EC71 /* Pods_JCWeibo.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2B46A10E1E66DEF100EB8534 /* QRCode */ = {
+			isa = PBXGroup;
+			children = (
+				2B46A10F1E66DF0000EB8534 /* JCQRCodeViewController.swift */,
+				2B46A1111E66DF5500EB8534 /* JCQRCodeViewController.xib */,
+			);
+			path = QRCode;
 			sourceTree = "<group>";
 		};
 		2B4B21C51E66A07000B6909F /* Classes */ = {
@@ -206,6 +221,7 @@
 		2B4B21D21E66A07000B6909F /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				2B46A10E1E66DEF100EB8534 /* QRCode */,
 				2B4B21D31E66A07000B6909F /* Controller */,
 				2B4B21D41E66A07000B6909F /* Model */,
 				2B4B21D51E66A07000B6909F /* View */,
@@ -322,6 +338,7 @@
 			isa = PBXGroup;
 			children = (
 				2B4B21F51E66B27400B6909F /* UIButton+Extension.swift */,
+				2B46A1131E66E53D00EB8534 /* UIBarButtonItem+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -481,6 +498,7 @@
 				2B4B221A1E66C6A800B6909F /* ic_nav_title_show_arrow@3x.png in Resources */,
 				2B4B22191E66C6A800B6909F /* ic_nav_title_show_arrow@2x.png in Resources */,
 				2B4B221B1E66C6A800B6909F /* ic_nav_title_unshow_arrow@2x.png in Resources */,
+				2B46A1121E66DF5500EB8534 /* JCQRCodeViewController.xib in Resources */,
 				2B4B221C1E66C6A800B6909F /* ic_nav_title_unshow_arrow@3x.png in Resources */,
 				F7A42F1E1E669E39006593A2 /* Assets.xcassets in Resources */,
 			);
@@ -546,6 +564,7 @@
 				2B4B21F61E66B27400B6909F /* UIButton+Extension.swift in Sources */,
 				2B4B21E11E66A11400B6909F /* JCHomeViewController.swift in Sources */,
 				2B4B21EB1E66A17500B6909F /* JCMainNavigationController.swift in Sources */,
+				2B46A1101E66DF0000EB8534 /* JCQRCodeViewController.swift in Sources */,
 				2B4B21ED1E66A27000B6909F /* JCMainTabBarController.swift in Sources */,
 				2B4B21EF1E66AE7B00B6909F /* JCVisitorTableViewController.swift in Sources */,
 				2B4B220D1E66C59000B6909F /* JLPopMenuTool.m in Sources */,
@@ -556,6 +575,7 @@
 				2B4B221D1E66C6A800B6909F /* NSFilterNavBarButton.m in Sources */,
 				2B4B220A1E66C59000B6909F /* JLPopMenuCell.m in Sources */,
 				2B4B220C1E66C59000B6909F /* JLPopMenuController.m in Sources */,
+				2B46A1141E66E53D00EB8534 /* UIBarButtonItem+Extension.swift in Sources */,
 				2B4B21E71E66A14200B6909F /* JCMessageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

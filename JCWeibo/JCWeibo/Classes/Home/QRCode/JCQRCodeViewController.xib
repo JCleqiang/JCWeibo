@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JCQRCodeViewController" customModule="JCWeibo" customModuleProvider="target">
+            <connections>
+                <outlet property="containerView" destination="rE8-Zf-YV2" id="Uwx-nP-Otq"/>
+                <outlet property="scanLineTopCons" destination="uCY-q1-nSs" id="BeQ-vM-st6"/>
+                <outlet property="scanLineView" destination="7Ts-yE-e9S" id="fT4-PB-Ns6"/>
+                <outlet property="view" destination="iN0-l3-epB" id="JQx-5D-SOk"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rE8-Zf-YV2">
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qrcode_border" translatesAutoresizingMaskIntoConstraints="NO" id="s0E-Aj-cgy"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qrcode_scanline_qrcode" translatesAutoresizingMaskIntoConstraints="NO" id="7Ts-yE-e9S"/>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="7Ts-yE-e9S" firstAttribute="width" secondItem="s0E-Aj-cgy" secondAttribute="width" id="1oI-Of-mQL"/>
+                        <constraint firstAttribute="width" constant="300" id="6CT-RV-gTO"/>
+                        <constraint firstItem="7Ts-yE-e9S" firstAttribute="trailing" secondItem="s0E-Aj-cgy" secondAttribute="trailing" id="aX8-7T-aOD"/>
+                        <constraint firstItem="7Ts-yE-e9S" firstAttribute="height" secondItem="s0E-Aj-cgy" secondAttribute="height" id="cKa-l5-FOu"/>
+                        <constraint firstAttribute="bottom" secondItem="s0E-Aj-cgy" secondAttribute="bottom" id="cch-Sf-QB0"/>
+                        <constraint firstItem="s0E-Aj-cgy" firstAttribute="top" secondItem="rE8-Zf-YV2" secondAttribute="top" id="gBf-8S-jcZ"/>
+                        <constraint firstAttribute="height" constant="300" id="mgD-JB-1DB"/>
+                        <constraint firstAttribute="trailing" secondItem="s0E-Aj-cgy" secondAttribute="trailing" id="paT-bN-7NS"/>
+                        <constraint firstItem="7Ts-yE-e9S" firstAttribute="top" secondItem="rE8-Zf-YV2" secondAttribute="top" id="uCY-q1-nSs"/>
+                        <constraint firstItem="s0E-Aj-cgy" firstAttribute="leading" secondItem="rE8-Zf-YV2" secondAttribute="leading" id="zK4-dd-qqM"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bhD-JG-XM3">
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="将二维码/条形码对准框内，即可扫描" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tlU-eh-LJu">
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="rE8-Zf-YV2" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="1hP-Mp-wXb"/>
+                <constraint firstItem="bhD-JG-XM3" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="2tq-VM-wLR"/>
+                <constraint firstItem="rE8-Zf-YV2" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="JSe-2U-u2a"/>
+                <constraint firstItem="tlU-eh-LJu" firstAttribute="top" secondItem="rE8-Zf-YV2" secondAttribute="bottom" constant="15" id="RJw-tV-FdL"/>
+                <constraint firstItem="rE8-Zf-YV2" firstAttribute="top" secondItem="bhD-JG-XM3" secondAttribute="bottom" constant="20" id="hfg-HC-oWW"/>
+                <constraint firstItem="tlU-eh-LJu" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="m5M-Y9-BPc"/>
+            </constraints>
+            <point key="canvasLocation" x="78" y="-199"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="qrcode_border" width="51" height="51"/>
+        <image name="qrcode_scanline_qrcode" width="218" height="170"/>
+    </resources>
+</document>

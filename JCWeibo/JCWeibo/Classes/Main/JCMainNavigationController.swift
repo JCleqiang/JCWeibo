@@ -12,24 +12,27 @@ class JCMainNavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+ 
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+ 
+    override class func initialize() {
+        
+        let navBar = UINavigationBar.appearance()
+        
+        // 设置导航栏变得不透明使得视图的坐标的原点从导航栏下边缘开始，也可以设置背景图片达到这个效果
+        navBar.isTranslucent = false
+        
+        navBar.tintColor = UIColor.orange
+        
+        let dict: [String: Any] = [NSForegroundColorAttributeName: UIColor.black,
+                                   NSFontAttributeName: UIFont.systemFont(ofSize: 18)]
+        navBar.titleTextAttributes = dict
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+        viewController.hidesBottomBarWhenPushed = childViewControllers.count != 0
+        
+        super.pushViewController(viewController, animated: animated)
     }
-    */
-
 }
+
