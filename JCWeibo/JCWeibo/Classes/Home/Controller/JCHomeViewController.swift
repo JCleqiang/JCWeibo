@@ -12,24 +12,33 @@ class JCHomeViewController: JCVisitorTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+ 
+        setupNav()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func setupNav() {
+        navigationItem.titleView = filterNavBarButton
+        
     }
-    */
+    
+    func filterNavBarButtonDidClick() {
+        let popMenuTool = JLPopMenuTool()
+        popMenuTool.menuArray = ["首页", "首页", "首页", "首页", "首页", "首页"]
+        popMenuTool.delegate = self
+        popMenuTool.show(from: filterNavBarButton)
+    }
+    
+    lazy var filterNavBarButton: NSFilterNavBarButton = {
+        let filterNavBarButton = NSFilterNavBarButton()
+        filterNavBarButton.addTarget(self, action: #selector(filterNavBarButtonDidClick), for:.touchUpInside)
+        filterNavBarButton.navTitle = "静持大师"
+        
+        return filterNavBarButton
+    }()
+}
 
+extension JCHomeViewController: JLPopMenuToolDelegate {
+    func popMenuTool(_ popMenuTool: JLPopMenuTool!, didSelectRowAt indexPath: IndexPath!) {
+        JCLog(message: "点击菜单")
+    }
 }
