@@ -26,7 +26,7 @@ class JCQRCodeViewController: UIViewController {
         JCLog(message: scanLineTopCons.constant)
         
         title = "扫一扫"
-        navigationItem.leftBarButtonItem = UIBarButtonItem.init(imageName: "关闭", target: self, action: #selector(leftItemDidClick))
+        navigationItem.leftBarButtonItem = UIBarButtonItem.init(imageName: "关闭", target: self, action: #selector(JCQRCodeViewController.leftItemDidClick))
 
         setupScanQRCode()
     }
@@ -36,7 +36,7 @@ class JCQRCodeViewController: UIViewController {
         startAnimation()
     }
     
-    func leftItemDidClick() {
+    @objc private func leftItemDidClick() {
         dismiss(animated: true, completion: nil)
     }
     

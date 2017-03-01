@@ -10,11 +10,12 @@ import UIKit
 
 class JCVisitorTableViewController: UITableViewController {
     
-    var isLogin = false
+    /// 定义便利记录当前用户登录状态
+    var isUserLogin = JCUserAccountViewModel.shareInstance.isUserLogin()
     var visitorView: JCVisitorView?
     
     override func loadView() {
-        if isLogin {
+        if isUserLogin {
             super.loadView()
         }
         else {
@@ -24,25 +25,35 @@ class JCVisitorTableViewController: UITableViewController {
             visitorView?.registerBtn.addTarget(self, action: #selector(registerBtnDicClick), for: .touchUpInside)
             
             view = visitorView
-        }
-
+        } 
+    }
+    
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        NotificationCenter.default.addObserver(self, selector: #selector(loginSuccessNoti), name: NSNotification.Name(rawValue: JCLoginSuccessNotification), object: nil)
     }
 
     // MARK: Action
     func loginBtnDicClick() {
-        JCLog(message: "点击登录")
+        let oauth = JCMainNavigationController(rootViewController: JCOAuthViewController())
+        present(oauth, animated: true, completion: nil)
+        
     }
     
     func registerBtnDicClick() {
         JCLog(message: "点击注册")
     }
     
-    // MARK: - Table view data source
+    func loginSuccessNoti()  {
+        super.loadView()
+    }
+     
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
