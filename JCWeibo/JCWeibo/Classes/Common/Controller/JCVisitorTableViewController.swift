@@ -35,7 +35,7 @@ class JCVisitorTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+ 
         NotificationCenter.default.addObserver(self, selector: #selector(loginSuccessNoti), name: NSNotification.Name(rawValue: JCLoginSuccessNotification), object: nil)
     }
 
@@ -55,13 +55,5 @@ class JCVisitorTableViewController: UITableViewController {
     }
      
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
+    
 }

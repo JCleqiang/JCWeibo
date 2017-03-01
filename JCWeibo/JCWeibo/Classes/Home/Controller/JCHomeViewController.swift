@@ -9,11 +9,37 @@
 import UIKit
 
 class JCHomeViewController: JCVisitorTableViewController {
+    
+    /// 保存所有微博数据
+    var statusViewModels: [JCStatusViewModel]? {
+        didSet{
+            tableView.reloadData()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
  
         setupNav()
+        
+        // 0.注册cell
+        tableView.register(JCHomeTableViewCell.self, forCellReuseIdentifier: kHomeCellId)
+        tableView.separatorStyle = .none
+        tableView.rowHeight = 100
+//        tableView.estimatedRowHeight = 400
+//        tableView.rowHeight = UITableViewAutomaticDimension
+        
+        JCStatusViewModel.loadStatuesData { (array, error) in
+            var models = [JCStatusViewModel]()
+            for dict in array! {
+                let statusModel = JCStatusModel(dict: dict)
+                let viewModel = JCStatusViewModel(statusModel: statusModel)
+                models.append(viewModel)
+            }
+
+            // 保存数据
+            self.statusViewModels = models;
+        }
     }
     
     func setupNav() {
@@ -45,6 +71,27 @@ class JCHomeViewController: JCVisitorTableViewController {
         
         return filterNavBarButton
     }()
+}
+
+extension JCHomeViewController {
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("xixi")
+        print(statusViewModels?.count)
+        return statusViewModels?.count ?? 0
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // 1.取出cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: kHomeCellId, for: indexPath) as! JCHomeTableViewCell
+        
+        // 2.设置数据
+        let viewModel = statusViewModels![indexPath.row]
+        cell.statusViewModels = viewModel
+        
+        // 3.返回cell
+        return cell
+    }
 }
 
 extension JCHomeViewController: JLPopMenuToolDelegate {

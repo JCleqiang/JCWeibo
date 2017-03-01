@@ -16,6 +16,12 @@
 		2B46A11E1E66F11A00EB8534 /* JCNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B46A11D1E66F11A00EB8534 /* JCNetworking.swift */; };
 		2B46A1201E66F80E00EB8534 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B46A11F1E66F80E00EB8534 /* String+Extension.swift */; };
 		2B46A1221E66FCEA00EB8534 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B46A1211E66FCEA00EB8534 /* Common.swift */; };
+		2B46A1241E67116800EB8534 /* JCHomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B46A1231E67116800EB8534 /* JCHomeTableViewCell.swift */; };
+		2B46A1291E6711B000EB8534 /* JCStatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B46A1281E6711B000EB8534 /* JCStatusViewModel.swift */; };
+		2B46A12B1E6711BB00EB8534 /* JCStatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B46A12A1E6711BB00EB8534 /* JCStatusModel.swift */; };
+		2B46A12F1E67126B00EB8534 /* JCUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B46A12E1E67126B00EB8534 /* JCUserModel.swift */; };
+		2B46A1311E67133700EB8534 /* NSDate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B46A1301E67133700EB8534 /* NSDate+Extension.swift */; };
+		2B46A1331E671F6900EB8534 /* temp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B46A1321E671F6900EB8534 /* temp.swift */; };
 		2B4B21E11E66A11400B6909F /* JCHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B21E01E66A11400B6909F /* JCHomeViewController.swift */; };
 		2B4B21E31E66A12500B6909F /* JCDiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B21E21E66A12500B6909F /* JCDiscoverViewController.swift */; };
 		2B4B21E51E66A13000B6909F /* JCMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B21E41E66A13000B6909F /* JCMeViewController.swift */; };
@@ -52,6 +58,12 @@
 		2B46A11D1E66F11A00EB8534 /* JCNetworking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCNetworking.swift; sourceTree = "<group>"; };
 		2B46A11F1E66F80E00EB8534 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		2B46A1211E66FCEA00EB8534 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		2B46A1231E67116800EB8534 /* JCHomeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCHomeTableViewCell.swift; sourceTree = "<group>"; };
+		2B46A1281E6711B000EB8534 /* JCStatusViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCStatusViewModel.swift; sourceTree = "<group>"; };
+		2B46A12A1E6711BB00EB8534 /* JCStatusModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCStatusModel.swift; sourceTree = "<group>"; };
+		2B46A12E1E67126B00EB8534 /* JCUserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCUserModel.swift; sourceTree = "<group>"; };
+		2B46A1301E67133700EB8534 /* NSDate+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Extension.swift"; sourceTree = "<group>"; };
+		2B46A1321E671F6900EB8534 /* temp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = temp.swift; sourceTree = "<group>"; };
 		2B4B21E01E66A11400B6909F /* JCHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCHomeViewController.swift; sourceTree = "<group>"; };
 		2B4B21E21E66A12500B6909F /* JCDiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCDiscoverViewController.swift; sourceTree = "<group>"; };
 		2B4B21E41E66A13000B6909F /* JCMeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCMeViewController.swift; sourceTree = "<group>"; };
@@ -134,6 +146,14 @@
 				2B46A11D1E66F11A00EB8534 /* JCNetworking.swift */,
 			);
 			path = JCNetworking;
+			sourceTree = "<group>";
+		};
+		2B46A1271E67119800EB8534 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2B46A1281E6711B000EB8534 /* JCStatusViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		2B4B21C51E66A07000B6909F /* Classes */ = {
@@ -252,10 +272,11 @@
 		2B4B21D21E66A07000B6909F /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				2B46A10E1E66DEF100EB8534 /* QRCode */,
-				2B4B21D31E66A07000B6909F /* Controller */,
+				2B46A1271E67119800EB8534 /* ViewModel */,
 				2B4B21D41E66A07000B6909F /* Model */,
+				2B4B21D31E66A07000B6909F /* Controller */,
 				2B4B21D51E66A07000B6909F /* View */,
+				2B46A10E1E66DEF100EB8534 /* QRCode */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -271,6 +292,9 @@
 		2B4B21D41E66A07000B6909F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2B46A12A1E6711BB00EB8534 /* JCStatusModel.swift */,
+				2B46A1321E671F6900EB8534 /* temp.swift */,
+				2B46A12E1E67126B00EB8534 /* JCUserModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -278,6 +302,7 @@
 		2B4B21D51E66A07000B6909F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2B46A1231E67116800EB8534 /* JCHomeTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -372,6 +397,7 @@
 				2B4B21F51E66B27400B6909F /* UIButton+Extension.swift */,
 				2B46A1131E66E53D00EB8534 /* UIBarButtonItem+Extension.swift */,
 				2B46A11F1E66F80E00EB8534 /* String+Extension.swift */,
+				2B46A1301E67133700EB8534 /* NSDate+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -610,13 +636,19 @@
 				F7A42F171E669E37006593A2 /* AppDelegate.swift in Sources */,
 				2B4B21F81E66B3C100B6909F /* JCVisitorView.swift in Sources */,
 				2B46A1221E66FCEA00EB8534 /* Common.swift in Sources */,
+				2B46A1311E67133700EB8534 /* NSDate+Extension.swift in Sources */,
 				2B4B22201E66C6DA00B6909F /* UIButton+FillColor.m in Sources */,
+				2B46A1241E67116800EB8534 /* JCHomeTableViewCell.swift in Sources */,
+				2B46A1291E6711B000EB8534 /* JCStatusViewModel.swift in Sources */,
 				2B4B22101E66C5BC00B6909F /* UIView+Frame.m in Sources */,
 				2B4B221D1E66C6A800B6909F /* NSFilterNavBarButton.m in Sources */,
 				2B4B220A1E66C59000B6909F /* JLPopMenuCell.m in Sources */,
 				2B4B220C1E66C59000B6909F /* JLPopMenuController.m in Sources */,
+				2B46A12B1E6711BB00EB8534 /* JCStatusModel.swift in Sources */,
+				2B46A12F1E67126B00EB8534 /* JCUserModel.swift in Sources */,
 				2B46A1141E66E53D00EB8534 /* UIBarButtonItem+Extension.swift in Sources */,
 				2B4B21E71E66A14200B6909F /* JCMessageViewController.swift in Sources */,
+				2B46A1331E671F6900EB8534 /* temp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
