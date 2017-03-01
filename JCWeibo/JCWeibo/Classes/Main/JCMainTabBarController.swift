@@ -47,7 +47,8 @@ class JCMainTabBarController: UITabBarController {
     }
     
     // MARK: Action
-    func composeButtonDidClick() {
+    // 为了提升性能了,Swift会在编译时确定的方法和属性, 如果想让Swift支持OC的动态派发那么必须在前面加上@objc
+    @objc private func composeButtonDidClick() {
         JCLog(message: "发送按钮点击")
     }
 

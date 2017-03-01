@@ -8,7 +8,7 @@
 
 import UIKit
 
-class JCMeViewController: UIViewController {
+class JCMeViewController: JCVisitorTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

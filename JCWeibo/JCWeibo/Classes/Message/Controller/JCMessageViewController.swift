@@ -8,7 +8,7 @@
 
 import UIKit
 
-class JCMessageViewController: UIViewController {
+class JCMessageViewController: JCVisitorTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

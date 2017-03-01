@@ -8,7 +8,7 @@
 
 import UIKit
 
-class JCHomeViewController: UIViewController {
+class JCHomeViewController: JCVisitorTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

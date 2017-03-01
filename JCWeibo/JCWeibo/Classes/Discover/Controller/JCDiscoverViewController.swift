@@ -8,7 +8,7 @@
 
 import UIKit
 
-class JCDiscoverViewController: UIViewController {
+class JCDiscoverViewController: JCVisitorTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

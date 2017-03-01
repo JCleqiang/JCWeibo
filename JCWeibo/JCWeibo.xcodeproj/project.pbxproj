@@ -13,6 +13,9 @@
 		2B4B21E71E66A14200B6909F /* JCMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B21E61E66A14200B6909F /* JCMessageViewController.swift */; };
 		2B4B21EB1E66A17500B6909F /* JCMainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B21EA1E66A17500B6909F /* JCMainNavigationController.swift */; };
 		2B4B21ED1E66A27000B6909F /* JCMainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B21EC1E66A27000B6909F /* JCMainTabBarController.swift */; };
+		2B4B21EF1E66AE7B00B6909F /* JCVisitorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B21EE1E66AE7B00B6909F /* JCVisitorTableViewController.swift */; };
+		2B4B21F61E66B27400B6909F /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B21F51E66B27400B6909F /* UIButton+Extension.swift */; };
+		2B4B21F81E66B3C100B6909F /* JCVisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B21F71E66B3C100B6909F /* JCVisitorView.swift */; };
 		EE531EAE11C81F5CB0CCF720 /* Pods_JCWeibo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AA15672D326CE4D0002EC71 /* Pods_JCWeibo.framework */; };
 		F7A42F171E669E37006593A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A42F161E669E37006593A2 /* AppDelegate.swift */; };
 		F7A42F1E1E669E39006593A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7A42F1D1E669E39006593A2 /* Assets.xcassets */; };
@@ -26,6 +29,9 @@
 		2B4B21E61E66A14200B6909F /* JCMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCMessageViewController.swift; sourceTree = "<group>"; };
 		2B4B21EA1E66A17500B6909F /* JCMainNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCMainNavigationController.swift; sourceTree = "<group>"; };
 		2B4B21EC1E66A27000B6909F /* JCMainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCMainTabBarController.swift; sourceTree = "<group>"; };
+		2B4B21EE1E66AE7B00B6909F /* JCVisitorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCVisitorTableViewController.swift; sourceTree = "<group>"; };
+		2B4B21F51E66B27400B6909F /* UIButton+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		2B4B21F71E66B3C100B6909F /* JCVisitorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCVisitorView.swift; sourceTree = "<group>"; };
 		2C386DD31DEEEF4AFDB98E73 /* Pods-JCWeibo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JCWeibo.release.xcconfig"; path = "Pods/Target Support Files/Pods-JCWeibo/Pods-JCWeibo.release.xcconfig"; sourceTree = "<group>"; };
 		5AA15672D326CE4D0002EC71 /* Pods_JCWeibo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JCWeibo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBD248E5C59106AE940EF7CD /* Pods-JCWeibo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JCWeibo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JCWeibo/Pods-JCWeibo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -84,6 +90,7 @@
 		2B4B21C71E66A07000B6909F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				2B4B21EE1E66AE7B00B6909F /* JCVisitorTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -98,6 +105,7 @@
 		2B4B21C91E66A07000B6909F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2B4B21F71E66B3C100B6909F /* JCVisitorView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -273,8 +281,17 @@
 		2B4B21DF1E66A07000B6909F /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				2B4B21F41E66B26200B6909F /* Extension */,
 			);
 			path = Other;
+			sourceTree = "<group>";
+		};
+		2B4B21F41E66B26200B6909F /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				2B4B21F51E66B27400B6909F /* UIButton+Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		3B3602766CEB35123B0EC5DF /* Pods */ = {
@@ -442,10 +459,13 @@
 			files = (
 				2B4B21E31E66A12500B6909F /* JCDiscoverViewController.swift in Sources */,
 				2B4B21E51E66A13000B6909F /* JCMeViewController.swift in Sources */,
+				2B4B21F61E66B27400B6909F /* UIButton+Extension.swift in Sources */,
 				2B4B21E11E66A11400B6909F /* JCHomeViewController.swift in Sources */,
 				2B4B21EB1E66A17500B6909F /* JCMainNavigationController.swift in Sources */,
 				2B4B21ED1E66A27000B6909F /* JCMainTabBarController.swift in Sources */,
+				2B4B21EF1E66AE7B00B6909F /* JCVisitorTableViewController.swift in Sources */,
 				F7A42F171E669E37006593A2 /* AppDelegate.swift in Sources */,
+				2B4B21F81E66B3C100B6909F /* JCVisitorView.swift in Sources */,
 				2B4B21E71E66A14200B6909F /* JCMessageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
