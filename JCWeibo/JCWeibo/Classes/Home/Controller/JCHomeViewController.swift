@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class JCHomeViewController: JCVisitorTableViewController {
     /// 缓存行高字典(key就是微博ID, value就是当前微博的行高)
@@ -38,32 +39,68 @@ class JCHomeViewController: JCVisitorTableViewController {
  
         setupNav()
         
-        // 0.注册cell 
-        tableView.register(JCHomeTableViewRepostCell.self, forCellReuseIdentifier: JCHomeTableViewRepostCell.identifier())
-        tableView.register(JCHomeTableViewNormalCell.self, forCellReuseIdentifier: JCHomeTableViewNormalCell.identifier())
-        tableView.separatorStyle = .none
-//        tableView.rowHeight = 00
-//        tableView.estimatedRowHeight = 400
-//        tableView.rowHeight = UITableViewAutomaticDimension
+        setupTableView()
         
-        JCStatusViewModel.loadStatuesData { (array, error) in
-            var models = [JCStatusViewModel]()
-            for dict in array! {
-                let statusModel = JCStatusModel(dict: dict)
-                let viewModel = JCStatusViewModel(statusModel: statusModel)
-                models.append(viewModel)
-            }
-
-            // 保存数据
-            self.statusViewModels = models;
-        }
-         
     }
     
     func setupNav() {
         navigationItem.titleView = filterNavBarButton
         navigationItem.leftBarButtonItem = UIBarButtonItem(imageName:"navigationbar_friendattention", target: self, action: #selector(leftBtnClick))
         navigationItem.rightBarButtonItem = UIBarButtonItem(imageName:"navigationbar_pop", target: self, action: #selector(rightBtnClick))
+    }
+    
+    func setupTableView()  {
+        // 0.注册cell
+        tableView.register(JCHomeTableViewRepostCell.self, forCellReuseIdentifier: JCHomeTableViewRepostCell.identifier())
+        tableView.register(JCHomeTableViewNormalCell.self, forCellReuseIdentifier: JCHomeTableViewNormalCell.identifier())
+        tableView.separatorStyle = .none
+        
+        tableView.mj_header = JCRefreshHeader(refreshingBlock: {
+            let since_id = self.statusViewModels?.first?.statusModel.id ?? 0
+            let max_id = 0
+            JCStatusViewModel.loadStatuesData(since_id: since_id, max_id: max_id, finished: { (array, error) in
+                self.tableView.mj_header.endRefreshing()
+                
+                var models = [JCStatusViewModel]()
+                for dict in array! {
+                    let statusModel = JCStatusModel(dict: dict)
+                    let viewModel = JCStatusViewModel(statusModel: statusModel)
+                    models.append(viewModel)
+                }
+                
+                if models.count == 0 {
+                    SVProgressHUD.showInfo(withStatus: "没有微博更新")
+                }else {
+                    SVProgressHUD.showInfo(withStatus: "更新\(models.count)条微博")
+                }
+
+                guard let hadModels = self.statusViewModels else {
+                    self.statusViewModels = models
+                    return
+                }
+                
+                self.statusViewModels = models + hadModels
+            })
+        })
+        tableView.mj_header.beginRefreshing()
+        
+        
+        tableView.mj_footer = JCRefreshFooter(refreshingBlock: { 
+            let since_id = 0
+            let max_id = self.statusViewModels!.last!.statusModel.id - 1
+            JCStatusViewModel.loadStatuesData(since_id: since_id, max_id: max_id, finished: { (array, error) in
+                self.tableView.mj_footer.endRefreshing()
+                
+                var models = [JCStatusViewModel]()
+                for dict in array! {
+                    let statusModel = JCStatusModel(dict: dict)
+                    let viewModel = JCStatusViewModel(statusModel: statusModel)
+                    models.append(viewModel)
+                }
+                
+                self.statusViewModels = self.statusViewModels! + models
+            })
+        })
     }
     
     func filterNavBarButtonDidClick() {
@@ -132,6 +169,7 @@ extension JCHomeViewController {
         }
         
         // 2.拿到当前行对应的cell
+
         let Identifier = JCHomeTableViewCell.identiferWithViewModel(viewModel: viewModel)
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifier) as! JCHomeTableViewCell
         

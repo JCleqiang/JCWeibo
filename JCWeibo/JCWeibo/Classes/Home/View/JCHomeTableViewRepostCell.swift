@@ -48,13 +48,13 @@ class JCHomeTableViewRepostCell: JCHomeTableViewCell {
         coverView.snp.makeConstraints { (make) -> Void in
             make.left.equalTo(contentView.snp.left)
             make.right.equalTo(contentView.snp.right)
-            make.top.equalTo(contentTextLabel.snp.bottom).offset(10)
-            make.bottom.equalTo(collectionView.snp.bottom).offset(10)
+            make.top.equalTo(contentTextLabel.snp.bottom).offset(kHomeCellMargin)
+            make.bottom.equalTo(collectionView.snp.bottom).offset(kHomeCellMargin)
         }
         
         forwradTextLabel.snp.makeConstraints { (make) -> Void in
-            make.left.equalTo(coverView.snp.left).offset(kHomeCellMargin)
-            make.top.equalTo(coverView.snp.top).offset(kHomeCellMargin)
+            make.left.equalTo(coverView.snp.left).offset(10)
+            make.top.equalTo(coverView.snp.top).offset(10)
         }
         
         collectionView.snp.removeConstraints()

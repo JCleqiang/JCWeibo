@@ -100,9 +100,9 @@ class JCStatusViewModel: NSObject {
 
     
     // 获取微博数据
-    class func loadStatuesData(finished: @escaping (_ array: [[String: AnyObject]]?, _ error: NSError?)->()) {
+    class func loadStatuesData(since_id: Int, max_id: Int, finished: @escaping (_ array: [[String: AnyObject]]?, _ error: NSError?)->()) {
         let path = "2/statuses/home_timeline.json"
-        let parameters = ["access_token": JCUserAccountViewModel.shareInstance.access_token!]
+        let parameters: [String : Any] = ["access_token": JCUserAccountViewModel.shareInstance.access_token!, "since_id": since_id, "max_id": max_id]
         
         JCNetworking.sharedInstance.getRequest(urlString: path, params: parameters, success: { (response) in
             
