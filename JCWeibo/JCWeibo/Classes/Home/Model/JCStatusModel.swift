@@ -22,6 +22,9 @@ class JCStatusModel: NSObject {
     /// 当前微博所有配图
     var pic_urls: [JCPicture]?
     
+    /// 转发微博
+    var retweeted_status: JCStatusModel?
+    
     init(dict: [String: AnyObject]) {
         super.init()
         setValuesForKeys(dict)
@@ -44,6 +47,9 @@ class JCStatusModel: NSObject {
                 models.append(JCPicture(dict: dict))
             }
             pic_urls = models
+            return
+        }else if key == "retweeted_status" {
+            retweeted_status = JCStatusModel(dict: value as! [String : AnyObject])
             return
         }
         super.setValue(value, forKey: key)

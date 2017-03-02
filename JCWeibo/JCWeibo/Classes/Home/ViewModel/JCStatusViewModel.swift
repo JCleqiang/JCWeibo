@@ -86,12 +86,9 @@ class JCStatusViewModel: NSObject {
     var thumbnail_urls: [NSURL]? {
         
         //安全校验
-        guard let array = statusModel.pic_urls else {
+        guard let array = statusModel.retweeted_status?.pic_urls ?? statusModel.pic_urls else {
             return nil
         }
-        
-        print("xiao")
-        print(array)
          
         var models = [NSURL]()
         for pic in array {

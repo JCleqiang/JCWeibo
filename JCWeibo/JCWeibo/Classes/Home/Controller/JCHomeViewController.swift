@@ -31,14 +31,16 @@ class JCHomeViewController: JCVisitorTableViewController {
             tableView.reloadData()
         }
     }
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
  
         setupNav()
         
-        // 0.注册cell
-        tableView.register(JCHomeTableViewCell.self, forCellReuseIdentifier: JCHomeTableViewCell.identifier())
+        // 0.注册cell 
+        tableView.register(JCHomeTableViewRepostCell.self, forCellReuseIdentifier: JCHomeTableViewRepostCell.identifier())
+        tableView.register(JCHomeTableViewNormalCell.self, forCellReuseIdentifier: JCHomeTableViewNormalCell.identifier())
         tableView.separatorStyle = .none
 //        tableView.rowHeight = 00
 //        tableView.estimatedRowHeight = 400
@@ -98,11 +100,15 @@ extension JCHomeViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let viewModel = statusViewModels![indexPath.row]
+        
+        let Identifier = JCHomeTableViewCell.identiferWithViewModel(viewModel: viewModel)
+        
         // 1.取出cell
-        let cell = tableView.dequeueReusableCell(withIdentifier: JCHomeTableViewCell.identifier(), for: indexPath) as! JCHomeTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier, for: indexPath) as! JCHomeTableViewCell
         
         // 2.设置数据
-        let viewModel = statusViewModels![indexPath.row]
+        
         cell.statusViewModel = viewModel
         
         // 3.返回cell
@@ -116,6 +122,7 @@ extension JCHomeViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         // 0. 获取当前行对用的模型
         let viewModel = statusViewModels![indexPath.row]
+
          
         // 1.先从缓存中获取行高
         if let height = rowHeightCache.object(forKey: viewModel.statusModel.id.description) as? CGFloat {
@@ -125,7 +132,8 @@ extension JCHomeViewController {
         }
         
         // 2.拿到当前行对应的cell
-        let cell = tableView.dequeueReusableCell(withIdentifier: JCHomeTableViewCell.identifier()) as! JCHomeTableViewCell
+        let Identifier = JCHomeTableViewCell.identiferWithViewModel(viewModel: viewModel)
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier) as! JCHomeTableViewCell
         
         // 3.获取当前行行高
         let height = cell.rowHeight(viewModel: viewModel)

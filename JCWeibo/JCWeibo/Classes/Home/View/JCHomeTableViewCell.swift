@@ -78,8 +78,8 @@ class JCHomeTableViewCell: UITableViewCell {
         
         // 2.7正文
         contentTextLabel.snp.makeConstraints { (make) -> Void in
-            make.left.equalTo(cellTopView.snp.left).offset(kHomeCellMargin)
-            make.top.equalTo(cellTopView.snp.bottom).offset(kHomeCellMargin)
+            make.left.equalTo(cellTopView.snp.left).offset(10)
+            make.top.equalTo(cellTopView.snp.bottom).offset(10)
         }
         
         // 配图
@@ -120,13 +120,18 @@ class JCHomeTableViewCell: UITableViewCell {
             make.right.equalTo(bottomView.snp.right)
         }
     }
- 
+    
+    // MAKR: - 外部控制方法
+    class func identiferWithViewModel(viewModel: JCStatusViewModel) -> String {
+        return (viewModel.statusModel.retweeted_status != nil) ? JCHomeTableViewRepostCell.identifier() : JCHomeTableViewNormalCell.identifier()
+    }
+
     /// 头部
     private lazy var cellTopView: JCHomeCellTopView = JCHomeCellTopView()
     /// 正文
-    private lazy var contentTextLabel =  UILabel(text: "fhdjksfhjksdhfjkdshfjkdshjkfhdsjkfhdsjkfdsjklfjdsklfjdsklfjklsdfjkldsjflkdsjfkldsjfkldsjklfjdsklfjdskljfkldsjfncoiewnijewnifniweuniwe", color: UIColor.darkGray, screenInset: 10)
+    lazy var contentTextLabel =  UILabel(text: "", color: UIColor.darkGray, screenInset: 10)
     /// 配图
-    private lazy var collectionView: JCHomeCellPictureView = {
+    lazy var collectionView: JCHomeCellPictureView = {
         let clv = JCHomeCellPictureView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         clv.register(JCHomePictureCell.self, forCellWithReuseIdentifier: JCHomePictureCell.identifier())
         clv.backgroundColor = UIColor.clear

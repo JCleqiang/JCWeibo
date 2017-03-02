@@ -46,6 +46,8 @@
 		2B591AC11E67B82D00D81675 /* JCHomeCellTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B591AC01E67B82D00D81675 /* JCHomeCellTopView.swift */; };
 		2B591AC31E67BB3B00D81675 /* JCHomeCellPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B591AC21E67BB3B00D81675 /* JCHomeCellPictureView.swift */; };
 		2B591AC51E67C38E00D81675 /* JCPicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B591AC41E67C38E00D81675 /* JCPicture.swift */; };
+		2B591AC71E67E7A800D81675 /* JCHomeTableViewRepostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B591AC61E67E7A800D81675 /* JCHomeTableViewRepostCell.swift */; };
+		2B591AC91E67E7B300D81675 /* JCHomeTableViewNormalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B591AC81E67E7B300D81675 /* JCHomeTableViewNormalCell.swift */; };
 		EE531EAE11C81F5CB0CCF720 /* Pods_JCWeibo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AA15672D326CE4D0002EC71 /* Pods_JCWeibo.framework */; };
 		F7A42F171E669E37006593A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A42F161E669E37006593A2 /* AppDelegate.swift */; };
 		F7A42F1E1E669E39006593A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7A42F1D1E669E39006593A2 /* Assets.xcassets */; };
@@ -99,6 +101,8 @@
 		2B591AC01E67B82D00D81675 /* JCHomeCellTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCHomeCellTopView.swift; sourceTree = "<group>"; };
 		2B591AC21E67BB3B00D81675 /* JCHomeCellPictureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCHomeCellPictureView.swift; sourceTree = "<group>"; };
 		2B591AC41E67C38E00D81675 /* JCPicture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCPicture.swift; sourceTree = "<group>"; };
+		2B591AC61E67E7A800D81675 /* JCHomeTableViewRepostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCHomeTableViewRepostCell.swift; sourceTree = "<group>"; };
+		2B591AC81E67E7B300D81675 /* JCHomeTableViewNormalCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCHomeTableViewNormalCell.swift; sourceTree = "<group>"; };
 		2C386DD31DEEEF4AFDB98E73 /* Pods-JCWeibo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JCWeibo.release.xcconfig"; path = "Pods/Target Support Files/Pods-JCWeibo/Pods-JCWeibo.release.xcconfig"; sourceTree = "<group>"; };
 		5AA15672D326CE4D0002EC71 /* Pods_JCWeibo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JCWeibo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBD248E5C59106AE940EF7CD /* Pods-JCWeibo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JCWeibo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JCWeibo/Pods-JCWeibo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -314,6 +318,8 @@
 				2B46A1231E67116800EB8534 /* JCHomeTableViewCell.swift */,
 				2B591AC01E67B82D00D81675 /* JCHomeCellTopView.swift */,
 				2B591AC21E67BB3B00D81675 /* JCHomeCellPictureView.swift */,
+				2B591AC61E67E7A800D81675 /* JCHomeTableViewRepostCell.swift */,
+				2B591AC81E67E7B300D81675 /* JCHomeTableViewNormalCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -631,6 +637,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B591AC91E67E7B300D81675 /* JCHomeTableViewNormalCell.swift in Sources */,
 				2B4B21E31E66A12500B6909F /* JCDiscoverViewController.swift in Sources */,
 				2B4B21E51E66A13000B6909F /* JCMeViewController.swift in Sources */,
 				2B46A11E1E66F11A00EB8534 /* JCNetworking.swift in Sources */,
@@ -655,6 +662,7 @@
 				2B46A1241E67116800EB8534 /* JCHomeTableViewCell.swift in Sources */,
 				2B46A1291E6711B000EB8534 /* JCStatusViewModel.swift in Sources */,
 				2B4B22101E66C5BC00B6909F /* UIView+Frame.m in Sources */,
+				2B591AC71E67E7A800D81675 /* JCHomeTableViewRepostCell.swift in Sources */,
 				2B591AC11E67B82D00D81675 /* JCHomeCellTopView.swift in Sources */,
 				2B4B221D1E66C6A800B6909F /* NSFilterNavBarButton.m in Sources */,
 				2B4B220A1E66C59000B6909F /* JLPopMenuCell.m in Sources */,
