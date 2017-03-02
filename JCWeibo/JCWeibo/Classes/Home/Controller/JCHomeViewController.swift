@@ -25,9 +25,9 @@ class JCHomeViewController: JCVisitorTableViewController {
         // 0.注册cell
         tableView.register(JCHomeTableViewCell.self, forCellReuseIdentifier: kHomeCellId)
         tableView.separatorStyle = .none
-        tableView.rowHeight = 100
-//        tableView.estimatedRowHeight = 400
-//        tableView.rowHeight = UITableViewAutomaticDimension
+//        tableView.rowHeight = 00
+        tableView.estimatedRowHeight = 400
+        tableView.rowHeight = UITableViewAutomaticDimension
         
         JCStatusViewModel.loadStatuesData { (array, error) in
             var models = [JCStatusViewModel]()
@@ -40,6 +40,7 @@ class JCHomeViewController: JCVisitorTableViewController {
             // 保存数据
             self.statusViewModels = models;
         }
+         
     }
     
     func setupNav() {
@@ -87,10 +88,14 @@ extension JCHomeViewController {
         
         // 2.设置数据
         let viewModel = statusViewModels![indexPath.row]
-        cell.statusViewModels = viewModel
+        cell.statusViewModel = viewModel
         
         // 3.返回cell
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

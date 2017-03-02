@@ -28,7 +28,6 @@ class JCVisitorTableViewController: UITableViewController {
         } 
     }
     
-    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }

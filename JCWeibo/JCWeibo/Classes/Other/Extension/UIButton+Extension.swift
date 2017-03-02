@@ -31,5 +31,31 @@ extension UIButton {
         setBackgroundImage(UIImage(named: backgroundImageName), for: .normal)
         setTitleColor(color, for: .normal)
     }
+     
     
+    convenience init(title: String, imageName: String, backgroundImageName: String, color: UIColor?, font: UIFont?) {
+        self.init(imageName: imageName, backgroundImageName: backgroundImageName)
+        
+        var myFont: UIFont?
+        var myColor: UIColor?
+        
+        if font == nil {
+            myFont = UIFont.systemFont(ofSize: 15)
+        }else {
+            myFont = font
+        }
+        
+        if color == nil {
+            myColor = UIColor.darkGray
+        }else {
+            myColor = color
+        }
+    
+        
+        titleLabel?.font = myFont
+        titleEdgeInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
+        setTitle(title, for: .normal)
+        setTitleColor(myColor, for: .normal)
+    }
+
 }

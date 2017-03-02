@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B3DBBA31E67A7F000351B01 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3DBBA21E67A7F000351B01 /* UILabel+Extension.swift */; };
 		2B46A1101E66DF0000EB8534 /* JCQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B46A10F1E66DF0000EB8534 /* JCQRCodeViewController.swift */; };
 		2B46A1121E66DF5500EB8534 /* JCQRCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B46A1111E66DF5500EB8534 /* JCQRCodeViewController.xib */; };
 		2B46A1141E66E53D00EB8534 /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B46A1131E66E53D00EB8534 /* UIBarButtonItem+Extension.swift */; };
@@ -49,6 +50,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B3DBBA21E67A7F000351B01 /* UILabel+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		2B46A10F1E66DF0000EB8534 /* JCQRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCQRCodeViewController.swift; sourceTree = "<group>"; };
 		2B46A1111E66DF5500EB8534 /* JCQRCodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JCQRCodeViewController.xib; sourceTree = "<group>"; };
 		2B46A1131E66E53D00EB8534 /* UIBarButtonItem+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extension.swift"; sourceTree = "<group>"; };
@@ -398,6 +400,7 @@
 				2B46A1131E66E53D00EB8534 /* UIBarButtonItem+Extension.swift */,
 				2B46A11F1E66F80E00EB8534 /* String+Extension.swift */,
 				2B46A1301E67133700EB8534 /* NSDate+Extension.swift */,
+				2B3DBBA21E67A7F000351B01 /* UILabel+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -647,6 +650,7 @@
 				2B46A12B1E6711BB00EB8534 /* JCStatusModel.swift in Sources */,
 				2B46A12F1E67126B00EB8534 /* JCUserModel.swift in Sources */,
 				2B46A1141E66E53D00EB8534 /* UIBarButtonItem+Extension.swift in Sources */,
+				2B3DBBA31E67A7F000351B01 /* UILabel+Extension.swift in Sources */,
 				2B4B21E71E66A14200B6909F /* JCMessageViewController.swift in Sources */,
 				2B46A1331E671F6900EB8534 /* temp.swift in Sources */,
 			);
