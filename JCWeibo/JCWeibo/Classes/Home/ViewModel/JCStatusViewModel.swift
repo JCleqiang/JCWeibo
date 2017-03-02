@@ -82,6 +82,26 @@ class JCStatusViewModel: NSObject {
         return nil
     }
     
+    /// 当前微博所有配图URL数组
+    var thumbnail_urls: [NSURL]? {
+        
+        //安全校验
+        guard let array = statusModel.pic_urls else {
+            return nil
+        }
+        
+        print("xiao")
+        print(array)
+         
+        var models = [NSURL]()
+        for pic in array {
+            let url = NSURL(string: pic.thumbnail_pic ?? "")!
+            models.append(url)
+        }
+        return models
+    }
+
+    
     // 获取微博数据
     class func loadStatuesData(finished: @escaping (_ array: [[String: AnyObject]]?, _ error: NSError?)->()) {
         let path = "2/statuses/home_timeline.json"

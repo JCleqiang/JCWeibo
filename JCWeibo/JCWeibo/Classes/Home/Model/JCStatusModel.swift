@@ -19,6 +19,8 @@ class JCStatusModel: NSObject {
     var source: String?
     /// 当前微博对应的用户
     var userModel: JCUserModel?
+    /// 当前微博所有配图
+    var pic_urls: [JCPicture]?
     
     init(dict: [String: AnyObject]) {
         super.init()
@@ -35,6 +37,13 @@ class JCStatusModel: NSObject {
         // 1.拦截user这个key, 如果是user这个key就直接处理
         if key == "user" {
             userModel = JCUserModel(dict: value as! [String : AnyObject])
+            return
+        }else if key == "pic_urls" {
+            var models = [JCPicture]()
+            for dict in (value as! [[String: AnyObject]]) {
+                models.append(JCPicture(dict: dict))
+            }
+            pic_urls = models
             return
         }
         super.setValue(value, forKey: key)

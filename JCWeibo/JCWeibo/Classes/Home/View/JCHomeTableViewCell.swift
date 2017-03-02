@@ -7,36 +7,29 @@
 //
 
 import UIKit
-import SDWebImage
-
-let kHomeCellId = "__homeCellId__"
+import SDWebImage 
 
 class JCHomeTableViewCell: UITableViewCell {
-    
     var statusViewModel: JCStatusViewModel? {
         didSet {
-            // 设置数据
-            // 1.设置头像
-            iconImageView.sd_setImage(with: statusViewModel?.AvatarURL as URL!)
-            // 2.设置认证图标
-            verifiedImageView.image = statusViewModel?.verifiedImage
-            // 3.设置昵称
-            nameLabel.text = statusViewModel?.statusModel.userModel?.screen_name
-            // 4.设置会员图标
-            vipImageView.image = statusViewModel?.vipImage
-            nameLabel.textColor = UIColor.darkGray
-            if statusViewModel?.vipImage != nil {
-                nameLabel.textColor = UIColor.orange
-            }
-            // 5.设置时间
-            timeLabel.text = statusViewModel?.timeStr
-            // 6.设置来源
-            sourceLabel.text = statusViewModel?.sourceStr
-            // 7.设置正文
+            // 头部
+            cellTopView.statusViewModel = statusViewModel
+            // 设置正文
             contentTextLabel.text = statusViewModel?.statusModel.text
+            
+            // 配图
+            collectionView.viewModel = statusViewModel
+            
+            let (clvSize, _) = collectionView.calculateSize()
+            // 3.2设置容器尺寸
+            collectionView.snp.updateConstraints { (make) -> Void in
+                make.width.equalTo(clvSize.width)
+                make.height.equalTo(clvSize.height)
+            }
         }
     }
 
+    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -48,74 +41,61 @@ class JCHomeTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MAKR: - 外部控制方法
+    class func identifier() -> String {
+        return NSStringFromClass(self)
+    }
+    
+    /**
+     计算行高
+     */
+    func rowHeight(viewModel: JCStatusViewModel) -> CGFloat {
+        // 1.设置数据
+        self.statusViewModel = viewModel
+        
+        // 2.更新布局
+        layoutIfNeeded()
+        
+        // 3.返回行高
+        return bottomView.frame.maxY 
+    }
+    
     func setupUI() {
         // 1.添加子控件
-        contentView.addSubview(iconImageView)
-        contentView.addSubview(verifiedImageView)
-        contentView.addSubview(nameLabel)
-        contentView.addSubview(vipImageView)
-        contentView.addSubview(timeLabel)
-        contentView.addSubview(sourceLabel)
+        contentView.addSubview(cellTopView)
         contentView.addSubview(contentTextLabel)
+        contentView.addSubview(collectionView)
         contentView.addSubview(bottomView)
         bottomView.addSubview(retweetButton)
         bottomView.addSubview(commentButton)
         bottomView.addSubview(unlikeButton)
         
         // 2.布局子控件
-        // 2.1布局头像
-        iconImageView.snp.makeConstraints { (make) -> Void in
-            make.left.equalTo(10)
-            make.top.equalTo(10)
-            make.width.equalTo(50)
-            make.height.equalTo(50)
-        }
-        iconImageView.layer.cornerRadius = 25
-        iconImageView.layer.masksToBounds = true
-        
-        // 2.2布局认证图标
-        verifiedImageView.snp.makeConstraints { (make) -> Void in
-            make.right.equalTo(iconImageView.snp.right)
-            make.bottom.equalTo(iconImageView.snp.bottom)
-        }
-        
-        // 2.3布局昵称
-        nameLabel.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(iconImageView.snp.top)
-            make.left.equalTo(iconImageView.snp.right).offset(10)
-        }
-        
-        // 2.4布局会员图标
-        vipImageView.snp.makeConstraints { (make) -> Void in
-            make.centerY.equalTo(nameLabel.snp.centerY)
-            make.left.equalTo(nameLabel.snp.right).offset(10)
-        }
-        
-        // 2.5时间
-        timeLabel.snp.makeConstraints { (make) -> Void in
-            make.left.equalTo(nameLabel.snp.left)
-            make.bottom.equalTo(iconImageView.snp.bottom)
-        }
-        
-        // 2.6来源
-        sourceLabel.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(timeLabel.snp.top)
-            make.left.equalTo(timeLabel.snp.right).offset(10)
+        cellTopView.snp.makeConstraints { (make) in
+            make.top.left.right.equalTo(contentView)
+            make.height.equalTo(66)
         }
         
         // 2.7正文
         contentTextLabel.snp.makeConstraints { (make) -> Void in
-            make.left.equalTo(iconImageView.snp.left)
-            make.top.equalTo(iconImageView.snp.bottom).offset(10)
+            make.left.equalTo(cellTopView.snp.left).offset(kHomeCellMargin)
+            make.top.equalTo(cellTopView.snp.bottom).offset(kHomeCellMargin)
+        }
+        
+        // 配图
+        collectionView.snp.makeConstraints { (make) -> Void in
+            make.left.equalTo(contentView.snp.left).offset(kHomeCellMargin)
+            make.top.equalTo(contentTextLabel.snp.bottom).offset(kHomeCellMargin)
+            make.width.equalTo(0)
+            make.height.equalTo(0)
         }
         
         // 2.8底部工具条
         bottomView.snp.makeConstraints { (make) -> Void in
+            make.height.equalTo(44)
             make.left.equalTo(contentView.snp.left)
             make.right.equalTo(contentView.snp.right)
-            make.height.equalTo(44)
-            make.top.equalTo(contentTextLabel.snp.bottom).offset(10)
-            make.bottom.equalTo(contentView.snp.bottom)
+            make.top.equalTo(collectionView.snp.bottom).offset(10)
         }
         
         // 2.9转发
@@ -140,22 +120,19 @@ class JCHomeTableViewCell: UITableViewCell {
             make.right.equalTo(bottomView.snp.right)
         }
     }
-
-    // MAKR: - 懒加载
-    /// 头像
-    private lazy var iconImageView = UIImageView(image: UIImage(named: "avatar_default_big"))
-    /// 认证图标
-    private lazy var verifiedImageView = UIImageView(image: UIImage(named: "avatar_vip"))
-    /// 昵称
-    private lazy var nameLabel = UILabel(text: "", color: UIColor.lightGray, screenInset: 0)
-    /// 会员图标
-    private lazy var vipImageView = UIImageView(image: UIImage(named: "common_icon_membership"))
-    /// 时间
-    private lazy var timeLabel = UILabel(text: "", color: UIColor.orange, screenInset: 0)
-    /// 来源
-    private lazy var sourceLabel = UILabel(text: "", color: UIColor.lightGray, screenInset: 0)
+ 
+    /// 头部
+    private lazy var cellTopView: JCHomeCellTopView = JCHomeCellTopView()
     /// 正文
     private lazy var contentTextLabel =  UILabel(text: "fhdjksfhjksdhfjkdshfjkdshjkfhdsjkfhdsjkfdsjklfjdsklfjdsklfjklsdfjkldsjflkdsjfkldsjfkldsjklfjdsklfjdskljfkldsjfncoiewnijewnifniweuniwe", color: UIColor.darkGray, screenInset: 10)
+    /// 配图
+    private lazy var collectionView: JCHomeCellPictureView = {
+        let clv = JCHomeCellPictureView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        clv.register(JCHomePictureCell.self, forCellWithReuseIdentifier: JCHomePictureCell.identifier())
+        clv.backgroundColor = UIColor.clear
+        return clv
+    }()
+
     /// 底部工具条
     private lazy var bottomView: UIView = {
         let view = UIView()
