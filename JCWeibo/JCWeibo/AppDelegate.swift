@@ -18,8 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // 创建窗口
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.backgroundColor = UIColor.orange
-        
+        window?.backgroundColor = UIColor.red
         window?.rootViewController = JCMainTabBarController()
         
         // 显示窗口

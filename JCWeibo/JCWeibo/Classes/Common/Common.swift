@@ -9,5 +9,6 @@
 import Foundation
 
 let JCLoginSuccessNotification = "__loginSuccessNotification__"
+let JCScanBigPicNotification = "__scanBigPicNotification__"
 
 let JC_Base_URL = "https://api.weibo.com/"

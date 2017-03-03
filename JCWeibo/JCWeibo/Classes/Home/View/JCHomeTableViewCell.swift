@@ -117,7 +117,7 @@ class JCHomeTableViewCell: UITableViewCell {
         
         // 2.8底部工具条
         bottomView.snp.makeConstraints { (make) -> Void in
-            make.height.equalTo(44)
+            make.height.equalTo(45)
             make.left.equalTo(contentView.snp.left)
             make.right.equalTo(contentView.snp.right)
             make.top.equalTo(collectionView.snp.bottom).offset(10)
@@ -127,7 +127,7 @@ class JCHomeTableViewCell: UITableViewCell {
         retweetButton.snp.makeConstraints { (make) -> Void in
             make.left.equalTo(bottomView.snp.left)
             make.top.equalTo(bottomView.snp.top)
-            make.bottom.equalTo(bottomView.snp.bottom)
+            make.bottom.equalTo(bottomView.snp.bottom).offset(-8)
         }
         // 2.10评论
         commentButton.snp.makeConstraints { (make) -> Void in
@@ -183,7 +183,7 @@ class JCHomeTableViewCell: UITableViewCell {
     /// 底部工具条
     private lazy var bottomView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.lightGray
+        view.backgroundColor = UIColor(red: 235.0/255, green: 235.0/255, blue: 235.0/255, alpha: 1.0)
         return view
     }()
     

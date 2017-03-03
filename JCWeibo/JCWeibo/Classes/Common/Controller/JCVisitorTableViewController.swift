@@ -35,7 +35,7 @@ class JCVisitorTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor(white: 0.9, alpha: 0.8)
+        view.backgroundColor = UIColor(red: 240.0/255, green: 240.0/255, blue: 240.0/255, alpha: 1.0)
  
         NotificationCenter.default.addObserver(self, selector: #selector(loginSuccessNoti), name: NSNotification.Name(rawValue: JCLoginSuccessNotification), object: nil)
     }

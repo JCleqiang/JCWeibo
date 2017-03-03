@@ -40,20 +40,20 @@ extension UIButton {
         var myColor: UIColor?
         
         if font == nil {
-            myFont = UIFont.systemFont(ofSize: 15)
+            myFont = UIFont.systemFont(ofSize: 13)
         }else {
             myFont = font
         }
         
         if color == nil {
-            myColor = UIColor.darkGray
+            myColor = UIColor.lightGray
         }else {
             myColor = color
         }
     
         
         titleLabel?.font = myFont
-        titleEdgeInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
+        titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
         setTitle(title, for: .normal)
         setTitleColor(myColor, for: .normal)
     }

@@ -23,6 +23,10 @@
 		2B46A12F1E67126B00EB8534 /* JCUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B46A12E1E67126B00EB8534 /* JCUserModel.swift */; };
 		2B46A1311E67133700EB8534 /* NSDate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B46A1301E67133700EB8534 /* NSDate+Extension.swift */; };
 		2B46A1331E671F6900EB8534 /* temp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B46A1321E671F6900EB8534 /* temp.swift */; };
+		2B4958AB1E699637008CEC6B /* KLPhotoBrowserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B4958A61E699637008CEC6B /* KLPhotoBrowserCell.m */; };
+		2B4958AC1E699637008CEC6B /* KLPhotoBrowserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B4958A71E699637008CEC6B /* KLPhotoBrowserCell.xib */; };
+		2B4958AD1E699637008CEC6B /* KLPhotoBrowserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B4958A91E699637008CEC6B /* KLPhotoBrowserController.m */; };
+		2B4958AE1E699637008CEC6B /* KLPhotoBrowserController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B4958AA1E699637008CEC6B /* KLPhotoBrowserController.xib */; };
 		2B4B21E11E66A11400B6909F /* JCHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B21E01E66A11400B6909F /* JCHomeViewController.swift */; };
 		2B4B21E31E66A12500B6909F /* JCDiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B21E21E66A12500B6909F /* JCDiscoverViewController.swift */; };
 		2B4B21E51E66A13000B6909F /* JCMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B21E41E66A13000B6909F /* JCMeViewController.swift */; };
@@ -94,6 +98,12 @@
 		2B46A12E1E67126B00EB8534 /* JCUserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCUserModel.swift; sourceTree = "<group>"; };
 		2B46A1301E67133700EB8534 /* NSDate+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Extension.swift"; sourceTree = "<group>"; };
 		2B46A1321E671F6900EB8534 /* temp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = temp.swift; sourceTree = "<group>"; };
+		2B4958A51E699637008CEC6B /* KLPhotoBrowserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLPhotoBrowserCell.h; sourceTree = "<group>"; };
+		2B4958A61E699637008CEC6B /* KLPhotoBrowserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLPhotoBrowserCell.m; sourceTree = "<group>"; };
+		2B4958A71E699637008CEC6B /* KLPhotoBrowserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KLPhotoBrowserCell.xib; sourceTree = "<group>"; };
+		2B4958A81E699637008CEC6B /* KLPhotoBrowserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLPhotoBrowserController.h; sourceTree = "<group>"; };
+		2B4958A91E699637008CEC6B /* KLPhotoBrowserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLPhotoBrowserController.m; sourceTree = "<group>"; };
+		2B4958AA1E699637008CEC6B /* KLPhotoBrowserController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KLPhotoBrowserController.xib; sourceTree = "<group>"; };
 		2B4B21E01E66A11400B6909F /* JCHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCHomeViewController.swift; sourceTree = "<group>"; };
 		2B4B21E21E66A12500B6909F /* JCDiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCDiscoverViewController.swift; sourceTree = "<group>"; };
 		2B4B21E41E66A13000B6909F /* JCMeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCMeViewController.swift; sourceTree = "<group>"; };
@@ -233,6 +243,19 @@
 				2B46A1281E6711B000EB8534 /* JCStatusViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2B4958A41E699637008CEC6B /* PhotoBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				2B4958A51E699637008CEC6B /* KLPhotoBrowserCell.h */,
+				2B4958A61E699637008CEC6B /* KLPhotoBrowserCell.m */,
+				2B4958A71E699637008CEC6B /* KLPhotoBrowserCell.xib */,
+				2B4958A81E699637008CEC6B /* KLPhotoBrowserController.h */,
+				2B4958A91E699637008CEC6B /* KLPhotoBrowserController.m */,
+				2B4958AA1E699637008CEC6B /* KLPhotoBrowserController.xib */,
+			);
+			path = PhotoBrowser;
 			sourceTree = "<group>";
 		};
 		2B4B21C51E66A07000B6909F /* Classes */ = {
@@ -492,6 +515,7 @@
 		2B4B21F91E66BB8300B6909F /* MyTool */ = {
 			isa = PBXGroup;
 			children = (
+				2B4958A41E699637008CEC6B /* PhotoBrowser */,
 				2B591B0E1E67F9DA00D81675 /* JCRefresh */,
 				2B46A11C1E66F11100EB8534 /* JCNetworking */,
 				2B4B22021E66C59000B6909F /* JLPopMenuTool */,
@@ -757,8 +781,10 @@
 				2B4B220B1E66C59000B6909F /* JLPopMenuCell.xib in Resources */,
 				2B4B221A1E66C6A800B6909F /* ic_nav_title_show_arrow@3x.png in Resources */,
 				2B4B22191E66C6A800B6909F /* ic_nav_title_show_arrow@2x.png in Resources */,
+				2B4958AC1E699637008CEC6B /* KLPhotoBrowserCell.xib in Resources */,
 				2B4B221B1E66C6A800B6909F /* ic_nav_title_unshow_arrow@2x.png in Resources */,
 				2B46A1121E66DF5500EB8534 /* JCQRCodeViewController.xib in Resources */,
+				2B4958AE1E699637008CEC6B /* KLPhotoBrowserController.xib in Resources */,
 				2B4B221C1E66C6A800B6909F /* ic_nav_title_unshow_arrow@3x.png in Resources */,
 				F7A42F1E1E669E39006593A2 /* Assets.xcassets in Resources */,
 				2B591B081E67F8F600D81675 /* MJRefresh.bundle in Resources */,
@@ -834,6 +860,7 @@
 				2B591AFD1E67F8F600D81675 /* MJRefreshFooter.m in Sources */,
 				2B4B21EB1E66A17500B6909F /* JCMainNavigationController.swift in Sources */,
 				2B5AA2CF1E695AF7005051E5 /* JCCommonWebViewController.swift in Sources */,
+				2B4958AD1E699637008CEC6B /* KLPhotoBrowserController.m in Sources */,
 				2B46A11B1E66ED6000EB8534 /* JCUserAccountViewModel.swift in Sources */,
 				2B591B021E67F8F600D81675 /* MJRefreshBackGifFooter.m in Sources */,
 				2B591B0A1E67F8F600D81675 /* NSBundle+MJRefresh.m in Sources */,
@@ -878,6 +905,7 @@
 				2B3DBBA31E67A7F000351B01 /* UILabel+Extension.swift in Sources */,
 				2B4B21E71E66A14200B6909F /* JCMessageViewController.swift in Sources */,
 				2B46A1331E671F6900EB8534 /* temp.swift in Sources */,
+				2B4958AB1E699637008CEC6B /* KLPhotoBrowserCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

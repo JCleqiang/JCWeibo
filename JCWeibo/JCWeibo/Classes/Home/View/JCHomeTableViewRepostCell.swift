@@ -32,7 +32,8 @@ class JCHomeTableViewRepostCell: JCHomeTableViewCell {
     // MAKR: - 懒加载
     lazy var coverView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(white: 0.9, alpha: 0.8)
+        view.backgroundColor = UIColor(red: 240.0/255, green: 240.0/255, blue: 240.0/255, alpha: 1.0)
+
         return view
     }()
     lazy var forwradTextLabel: KILabel = {
@@ -64,7 +65,7 @@ class JCHomeTableViewRepostCell: JCHomeTableViewCell {
             make.left.equalTo(contentView.snp.left)
             make.right.equalTo(contentView.snp.right)
             make.top.equalTo(contentTextLabel.snp.bottom).offset(kHomeCellMargin)
-            make.bottom.equalTo(collectionView.snp.bottom).offset(kHomeCellMargin)
+            make.bottom.equalTo(collectionView.snp.bottom).offset(10)
         }
         
         forwradTextLabel.snp.makeConstraints { (make) -> Void in
@@ -80,8 +81,6 @@ class JCHomeTableViewRepostCell: JCHomeTableViewCell {
             make.height.equalTo(0)
         }
     }
-
-    
 }
 
 extension JCHomeTableViewRepostCell {

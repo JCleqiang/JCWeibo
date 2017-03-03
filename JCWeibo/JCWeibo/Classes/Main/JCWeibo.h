@@ -9,3 +9,4 @@
 #import "JLPopMenuTool.h"
 #import "NSFilterNavBarButton.h"
 #import "MJRefresh.h"
+#import "KLPhotoBrowserController.h"

@@ -33,13 +33,18 @@ class JCHomeViewController: JCVisitorTableViewController {
         }
     }
     
-    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
  
         setupNav()
         
         setupTableView()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(scanBigPicNoti), name: NSNotification.Name(rawValue: JCScanBigPicNotification), object: nil)
     }
     
     func setupNav() {
@@ -100,6 +105,15 @@ class JCHomeViewController: JCVisitorTableViewController {
                 self.statusViewModels = self.statusViewModels! + models
             })
         })
+    }
+    
+    func scanBigPicNoti(noti: Notification)  {
+        let info: [String: Any] = noti.userInfo as! [String : Any]
+        
+        JCLog(message: info)
+        
+        let photo = KLPhotoBrowserController(imageMessageArray: info["urls"] as! [String]!, seletedIndex: (info["indexPath"] as! NSIndexPath).row)
+        present(photo!, animated: false, completion: nil)
     }
     
     func filterNavBarButtonDidClick() {

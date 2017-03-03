@@ -91,6 +91,27 @@ class JCStatusViewModel: NSObject {
         }
         return models
     }
+    
+    /// 当前微博所有配图大图URL数组
+    var large_urls: [NSString]? {
+        //安全校验
+        guard let array = statusModel.retweeted_status?.pic_urls ?? statusModel.pic_urls else {
+            return nil
+        }
+        
+        var models = [NSString]()
+        for pic in array {
+            // 取出当前配图的URL字符串
+            guard var temp =  pic.thumbnail_pic else{
+                continue
+            }
+            // 将当前URL字符串中的thumbnail替换为large
+            temp = (temp as NSString).replacingOccurrences(of: "thumbnail", with: "large")
+//            let url = NSURL(string:temp)!
+            models.append(temp as NSString)
+        }
+        return models
+    }
 
     
     // 获取微博数据

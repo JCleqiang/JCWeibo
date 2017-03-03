@@ -34,6 +34,7 @@ class JCHomeCellPictureView: UICollectionView {
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
         dataSource = self
+        delegate = self
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -108,6 +109,25 @@ extension JCHomeCellPictureView: UICollectionViewDataSource {
         return cell
     }
 }
+
+// MAKR: - 代理方法
+extension JCHomeCellPictureView: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+         
+        // 1.获取当前点击的cell
+//        let cell = collectionView.cellForItem(at: indexPath as IndexPath) as! JCHomeCellPictureView
+        // 2.取出当前点击图片的大图URL
+        let url = viewModel!.large_urls![indexPath.item] 
+        
+        SDWebImageManager.shared().downloadImage(with: NSURL(string: url as String) as URL!, options: SDWebImageOptions.retryFailed, progress: { (current, total) in
+            //
+            }) { (_, _, _, _, _) in
+                let userInfo: [String: Any] = ["urls": self.viewModel!.large_urls!, "indexPath": indexPath]
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: JCScanBigPicNotification), object: nil, userInfo: userInfo)
+        }
+    }
+}
+
 
 
 // MAKR: - 自定义配图Cell
