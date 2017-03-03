@@ -62,21 +62,15 @@ class JCStatusViewModel: NSObject {
         let text: String = statusModel.source!
         
         if text != "" {
-//            // 1. 查找开始的位置
-//            let startIndex = text.range(of: ">").location + 1
-//            
-//            Range
-//            
-//            // 2.计算截取长度
-//            // 注意: rangeOfString方法默认是从前往后找, 只要找到一个就不继续查找了
-//            let length = text.rangeOfString("<", options: .backwardsSearch).location - startIndex
-//            
-//            // 3.截取字符串
-//            let result = text.substringWithRange(NSMakeRange(startIndex, length))
-//            
-//            // 4.设置来源
-////            return "来自: " + result
-            return "来自: " + text
+            let text = text as NSString
+            
+            let startIndex = text.range(of: ">").location + 1
+            
+            let length = text.range(of: "<", options: .backwards).location - startIndex
+            
+            let result = text.substring(with: NSMakeRange(startIndex, length))
+
+            return "来自: " + result 
         }
         
         return nil
@@ -116,6 +110,8 @@ class JCStatusViewModel: NSObject {
                 finished(nil, NSError(domain: "com.520it.lnj", code: 1001, userInfo: ["message": "字典中没有statuses这个key"]))
                 return
             }
+            
+            JCLog(message: array)
             
             // 3.返回结果
             finished(array, nil)

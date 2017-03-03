@@ -54,10 +54,10 @@ class JCHomeCellTopView: UIView {
         iconImageView.snp.makeConstraints { (make) -> Void in
             make.left.equalTo(10)
             make.top.equalTo(10)
-            make.width.equalTo(50)
-            make.height.equalTo(50)
+            make.width.equalTo(44)
+            make.height.equalTo(44)
         }
-        iconImageView.layer.cornerRadius = 25
+        iconImageView.layer.cornerRadius = 22
         iconImageView.layer.masksToBounds = true
         
         // 2.2布局认证图标
@@ -68,7 +68,7 @@ class JCHomeCellTopView: UIView {
         
         // 2.3布局昵称
         nameLabel.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(iconImageView.snp.top)
+            make.top.equalTo(iconImageView.snp.top).offset(3)
             make.left.equalTo(iconImageView.snp.right).offset(10)
         }
         
@@ -81,7 +81,7 @@ class JCHomeCellTopView: UIView {
         // 2.5时间
         timeLabel.snp.makeConstraints { (make) -> Void in
             make.left.equalTo(nameLabel.snp.left)
-            make.bottom.equalTo(iconImageView.snp.bottom)
+            make.bottom.equalTo(iconImageView.snp.bottom).offset(-3)
         }
         
         // 2.6来源
@@ -97,11 +97,11 @@ class JCHomeCellTopView: UIView {
     /// 认证图标
     private lazy var verifiedImageView = UIImageView(image: UIImage(named: "avatar_vip"))
     /// 昵称
-    private lazy var nameLabel = UILabel(text: "", color: UIColor.lightGray, screenInset: 0)
+    private lazy var nameLabel = UILabel(text: "", fontSize:14, color: UIColor.lightGray, screenInset: 0)
     /// 会员图标
     private lazy var vipImageView = UIImageView(image: UIImage(named: "common_icon_membership"))
     /// 时间
-    private lazy var timeLabel = UILabel(text: "", color: UIColor.orange, screenInset: 0)
+    private lazy var timeLabel = UILabel(text: "", fontSize:12, color: UIColor.orange, screenInset: 0)
     /// 来源
-    private lazy var sourceLabel = UILabel(text: "", color: UIColor.lightGray, screenInset: 0)
+    private lazy var sourceLabel = UILabel(text: "", fontSize:12, color: UIColor.lightGray, screenInset: 0)
 }

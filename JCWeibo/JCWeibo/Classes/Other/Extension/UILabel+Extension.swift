@@ -10,12 +10,13 @@ import UIKit
 
 extension UILabel {
     
-    convenience init(text: String, color: UIColor = UIColor.lightGray, screenInset: CGFloat = 0) {
+    convenience init(text: String, fontSize: CGFloat, color: UIColor = UIColor.lightGray, screenInset: CGFloat = 0) {
         
         self.init()
         self.text = text
         textColor = color
         numberOfLines = 0
+        font = UIFont.systemFont(ofSize: fontSize)
         
         if screenInset != 0 {
             textAlignment = .left

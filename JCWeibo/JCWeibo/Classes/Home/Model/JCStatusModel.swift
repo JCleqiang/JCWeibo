@@ -21,6 +21,10 @@ class JCStatusModel: NSObject {
     var userModel: JCUserModel?
     /// 当前微博所有配图
     var pic_urls: [JCPicture]?
+
+    var reposts_count: Int = 0
+    var comments_count: Int = 0
+    var attitudes_count: Int = 0
     
     /// 转发微博
     var retweeted_status: JCStatusModel?

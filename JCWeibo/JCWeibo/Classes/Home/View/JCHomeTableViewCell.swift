@@ -33,6 +33,24 @@ class JCHomeTableViewCell: UITableViewCell {
                 make.width.equalTo(clvSize.width)
                 make.height.equalTo(clvSize.height)
             }
+            
+            if statusViewModel?.statusModel.reposts_count == 0 {
+                retweetButton.setTitle("评论", for: .normal)
+            }else {
+                retweetButton.setTitle(statusViewModel?.statusModel.reposts_count.description, for: .normal)
+            }
+            
+            if statusViewModel?.statusModel.comments_count == 0 {
+                commentButton.setTitle("评论", for: .normal)
+            }else {
+                commentButton.setTitle(statusViewModel?.statusModel.comments_count.description, for: .normal)
+            }
+            
+            if statusViewModel?.statusModel.attitudes_count == 0 {
+                unlikeButton.setTitle("评论", for: .normal)
+            }else {
+                unlikeButton.setTitle(statusViewModel?.statusModel.attitudes_count.description, for: .normal)
+            }
         }
     }
 
@@ -86,7 +104,7 @@ class JCHomeTableViewCell: UITableViewCell {
         // 2.7正文
         contentTextLabel.snp.makeConstraints { (make) -> Void in
             make.left.equalTo(cellTopView.snp.left).offset(10)
-            make.top.equalTo(cellTopView.snp.bottom).offset(10)
+            make.top.equalTo(cellTopView.snp.bottom)
         }
         
         // 配图
@@ -142,7 +160,7 @@ class JCHomeTableViewCell: UITableViewCell {
         lb.textColor = UIColor.darkGray
         lb.numberOfLines = 0
         lb.preferredMaxLayoutWidth = UIScreen.main.bounds.width - 2 * 10
-        
+        lb.font = UIFont.systemFont(ofSize: 15)
         // 监听URL点击
         lb.urlLinkTapHandler =  { label, url, range in
             JCLog(message: "URL \(url) tapped")
@@ -150,8 +168,7 @@ class JCHomeTableViewCell: UITableViewCell {
                 self.myDelegate!.highlightDidClik(content: url)
             }
         }
-        
-        
+    
         return lb
     }()
 

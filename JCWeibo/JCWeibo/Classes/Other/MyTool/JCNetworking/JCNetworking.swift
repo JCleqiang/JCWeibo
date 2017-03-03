@@ -28,7 +28,7 @@ extension JCNetworking {
                     //当响应成功是，使用临时变量value接受服务器返回的信息并判断是否为[String: AnyObject]类型 如果是那么将其传给其定义方法中的success
                     
                     success(value as! [String : AnyObject])
-                    print(value)
+//                    print(value)
                     
                 case .failure(let error):
                     failture(error)

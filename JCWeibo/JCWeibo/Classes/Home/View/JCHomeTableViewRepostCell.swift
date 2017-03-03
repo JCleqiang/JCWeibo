@@ -39,6 +39,7 @@ class JCHomeTableViewRepostCell: JCHomeTableViewCell {
         let lb = KILabel()
         lb.textColor = UIColor.darkGray
         lb.numberOfLines = 0
+        lb.font = UIFont.systemFont(ofSize: 15)
         lb.preferredMaxLayoutWidth = UIScreen.main.bounds.width - 2 * 10
         
         lb.urlLinkTapHandler =  { label, url, range in
