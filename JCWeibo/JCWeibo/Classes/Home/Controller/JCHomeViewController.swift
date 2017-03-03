@@ -40,7 +40,6 @@ class JCHomeViewController: JCVisitorTableViewController {
         setupNav()
         
         setupTableView()
-        
     }
     
     func setupNav() {
@@ -148,6 +147,8 @@ extension JCHomeViewController {
         
         cell.statusViewModel = viewModel
         
+        cell.myDelegate = self
+        
         // 3.返回cell
         return cell
     }
@@ -191,5 +192,15 @@ extension JCHomeViewController {
 extension JCHomeViewController: JLPopMenuToolDelegate {
     func popMenuTool(_ popMenuTool: JLPopMenuTool!, didSelectRowAt indexPath: IndexPath!) {
         JCLog(message: "点击菜单")
+    }
+}
+
+extension JCHomeViewController: JCHomeTableViewCellDelegate {
+    func highlightDidClik(content: String) {
+        if content.hasPrefix("http://") || content.hasPrefix("https://"){
+            let webView = JCCommonWebViewController()
+            webView.path = content
+            navigationController?.pushViewController(webView, animated: true)
+        }
     }
 }

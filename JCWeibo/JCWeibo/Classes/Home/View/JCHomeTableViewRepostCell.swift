@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KILabel
 
 class JCHomeTableViewRepostCell: JCHomeTableViewCell {
 
@@ -34,9 +35,22 @@ class JCHomeTableViewRepostCell: JCHomeTableViewCell {
         view.backgroundColor = UIColor(white: 0.9, alpha: 0.8)
         return view
     }()
-    lazy var forwradTextLabel = UILabel(text: "fjdsklfjhkldshfjkdshfjkdshjkfjdskfjsdk", color: UIColor.darkGray, screenInset: 10)
-    
-    
+    lazy var forwradTextLabel: KILabel = {
+        let lb = KILabel()
+        lb.textColor = UIColor.darkGray
+        lb.numberOfLines = 0
+        lb.preferredMaxLayoutWidth = UIScreen.main.bounds.width - 2 * 10
+        
+        lb.urlLinkTapHandler =  { label, url, range in
+            JCLog(message: "URL \(url) tapped")
+            if (self.myDelegate != nil) {
+                self.myDelegate!.highlightDidClik(content: url)
+            }
+        }
+        
+        return lb
+    }()
+
     override func setupUI() {
         super.setupUI()
         

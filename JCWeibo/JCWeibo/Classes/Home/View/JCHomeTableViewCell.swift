@@ -7,9 +7,16 @@
 //
 
 import UIKit
-import SDWebImage 
+import SDWebImage
+import KILabel
+
+protocol JCHomeTableViewCellDelegate {
+    func highlightDidClik(content: String)
+}
 
 class JCHomeTableViewCell: UITableViewCell {
+    var myDelegate: JCHomeTableViewCellDelegate?
+    
     var statusViewModel: JCStatusViewModel? {
         didSet {
             // 头部
@@ -129,7 +136,25 @@ class JCHomeTableViewCell: UITableViewCell {
     /// 头部
     private lazy var cellTopView: JCHomeCellTopView = JCHomeCellTopView()
     /// 正文
-    lazy var contentTextLabel =  UILabel(text: "", color: UIColor.darkGray, screenInset: 10)
+//    lazy var contentTextLabel =  UILabel(text: "", color: UIColor.darkGray, screenInset: 10)
+    lazy var contentTextLabel: KILabel = {
+        let lb = KILabel()
+        lb.textColor = UIColor.darkGray
+        lb.numberOfLines = 0
+        lb.preferredMaxLayoutWidth = UIScreen.main.bounds.width - 2 * 10
+        
+        // 监听URL点击
+        lb.urlLinkTapHandler =  { label, url, range in
+            JCLog(message: "URL \(url) tapped")
+            if (self.myDelegate != nil) {
+                self.myDelegate!.highlightDidClik(content: url)
+            }
+        }
+        
+        
+        return lb
+    }()
+
     /// 配图
     lazy var collectionView: JCHomeCellPictureView = {
         let clv = JCHomeCellPictureView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
