@@ -63,11 +63,8 @@ class JCStatusViewModel: NSObject {
         
         if text != "" {
             let text = text as NSString
-            
             let startIndex = text.range(of: ">").location + 1
-            
             let length = text.range(of: "<", options: .backwards).location - startIndex
-            
             let result = text.substring(with: NSMakeRange(startIndex, length))
 
             return "来自: " + result 
@@ -78,8 +75,6 @@ class JCStatusViewModel: NSObject {
     
     /// 当前微博所有配图URL数组
     var thumbnail_urls: [NSURL]? {
-        
-        //安全校验
         guard let array = statusModel.retweeted_status?.pic_urls ?? statusModel.pic_urls else {
             return nil
         }
@@ -106,8 +101,7 @@ class JCStatusViewModel: NSObject {
                 continue
             }
             // 将当前URL字符串中的thumbnail替换为large
-            temp = (temp as NSString).replacingOccurrences(of: "thumbnail", with: "large")
-//            let url = NSURL(string:temp)!
+            temp = (temp as NSString).replacingOccurrences(of: "thumbnail", with: "large") 
             models.append(temp as NSString)
         }
         return models
@@ -115,39 +109,27 @@ class JCStatusViewModel: NSObject {
 
     
     // 获取微博数据
-    class func loadStatuesData(since_id: Int, max_id: Int, finished: @escaping (_ array: [[String: AnyObject]]?, _ error: NSError?)->()) {
+    class func loadStatuesData(since_id: Int, max_id: Int, finished: @escaping (_ array: [[String: Any]]?, _ error: NSError?)->()) {
+        
         let path = "2/statuses/home_timeline.json"
         let parameters: [String : Any] = ["access_token": JCUserAccountViewModel.shareInstance.access_token!, "since_id": since_id, "max_id": max_id]
         
         JCNetworking.sharedInstance.getRequest(urlString: path, params: parameters, success: { (response) in
-            
-            // 1.将返回值转换为字典
             guard let dict = response as? [String: AnyObject] else {
-                finished(nil, NSError(domain: "com.520it.lnj", code: 1001, userInfo: ["message": "服务器是返回的数据不是字典"]))
+                finished(nil, NSError(domain: "", code: 1001, userInfo: ["message": "服务器是返回的数据不是字典"]))
                 return
             }
             // 2.从字典中取出所有微博数据
             guard let array = dict["statuses"] as? [[String: AnyObject]] else {
-                finished(nil, NSError(domain: "com.520it.lnj", code: 1001, userInfo: ["message": "字典中没有statuses这个key"]))
+                finished(nil, NSError(domain: "", code: 1001, userInfo: ["message": "字典中没有statuses这个key"]))
                 return
             }
-            
-            JCLog(message: array)
             
             // 3.返回结果
             finished(array, nil)
             
-//            do {
-//                let data = try JSONSerialization.data(withJSONObject: response, options: .prettyPrinted)
-//                let strJson = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
-//                print("------------------------------------------")
-//                print(strJson)
-//                print("------------------------------------------")
-//            } catch {
-//                print(error)
-//            }
         }) { (error) in
-            finished(nil, error as! NSError)
+            finished(nil, error as NSError)
         }
     }
     

@@ -14,11 +14,6 @@ class JCHomeViewController: JCVisitorTableViewController {
     lazy var rowHeightCache: NSMutableDictionary = {
         /*
          NSCache和字典差不错, 也是通过key/value的形式保存数据
-         
-         和字典不同的地方在于, 字典不会自动释放存储内容
-         NSCache当接收到系统内存警告时会自动释放存储的内容
-         
-         NSCache还可以设置最大能够存储的容量, 以及最大能够存储的个数
          */
         var cache = NSMutableDictionary()
 //        cache.countLimit = 30
@@ -42,9 +37,17 @@ class JCHomeViewController: JCVisitorTableViewController {
  
         setupNav()
         
-        setupTableView()
+        if tableView != nil {
+            setupTableView()
+        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(scanBigPicNoti), name: NSNotification.Name(rawValue: JCScanBigPicNotification), object: nil)
+    }
+    
+    override func loginSuccessNoti()  {
+        super.loginSuccessNoti()
+        
+        setupTableView()
     }
     
     func setupNav() {
@@ -65,18 +68,19 @@ class JCHomeViewController: JCVisitorTableViewController {
             JCStatusViewModel.loadStatuesData(since_id: since_id, max_id: max_id, finished: { (array, error) in
                 self.tableView.mj_header.endRefreshing()
                 
+                guard let array = array else {
+                    SVProgressHUD.showInfo(withStatus: "没有微博更新")
+                    return
+                }
+                
                 var models = [JCStatusViewModel]()
-                for dict in array! {
-                    let statusModel = JCStatusModel(dict: dict)
+                for dict in array {
+                    let statusModel = JCStatusModel(dict: dict as [String : AnyObject])
                     let viewModel = JCStatusViewModel(statusModel: statusModel)
                     models.append(viewModel)
                 }
                 
-                if models.count == 0 {
-                    SVProgressHUD.showInfo(withStatus: "没有微博更新")
-                }else {
-                    SVProgressHUD.showInfo(withStatus: "更新\(models.count)条微博")
-                }
+                SVProgressHUD.showInfo(withStatus: "更新\(models.count)条微博")
 
                 guard let hadModels = self.statusViewModels else {
                     self.statusViewModels = models
@@ -88,7 +92,6 @@ class JCHomeViewController: JCVisitorTableViewController {
         })
         tableView.mj_header.beginRefreshing()
         
-        
         tableView.mj_footer = JCRefreshFooter(refreshingBlock: { 
             let since_id = 0
             let max_id = self.statusViewModels!.last!.statusModel.id - 1
@@ -97,7 +100,7 @@ class JCHomeViewController: JCVisitorTableViewController {
                 
                 var models = [JCStatusViewModel]()
                 for dict in array! {
-                    let statusModel = JCStatusModel(dict: dict)
+                    let statusModel = JCStatusModel(dict: dict as [String : AnyObject])
                     let viewModel = JCStatusViewModel(statusModel: statusModel)
                     models.append(viewModel)
                 }
@@ -109,8 +112,6 @@ class JCHomeViewController: JCVisitorTableViewController {
     
     func scanBigPicNoti(noti: Notification)  {
         let info: [String: Any] = noti.userInfo as! [String : Any]
-        
-        JCLog(message: info)
         
         let photo = KLPhotoBrowserController(imageMessageArray: info["urls"] as! [String]!, seletedIndex: (info["indexPath"] as! NSIndexPath).row)
         present(photo!, animated: false, completion: nil)
@@ -144,7 +145,6 @@ class JCHomeViewController: JCVisitorTableViewController {
 extension JCHomeViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("xixi")
         print(statusViewModels?.count)
         return statusViewModels?.count ?? 0
     }
@@ -178,27 +178,17 @@ extension JCHomeViewController {
          
         // 1.先从缓存中获取行高
         if let height = rowHeightCache.object(forKey: viewModel.statusModel.id.description) as? CGFloat {
-            print("缓存高度")
-            print(height)
             return height
         }
         
-        // 2.拿到当前行对应的cell
-
+        // 2.拿到当前行对应的cell. 获取当前行行高
         let Identifier = JCHomeTableViewCell.identiferWithViewModel(viewModel: viewModel)
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifier) as! JCHomeTableViewCell
-        
-        // 3.获取当前行行高
         let height = cell.rowHeight(viewModel: viewModel)
         
         // 4.缓存行高
-//        rowHeightCache.setObject(height, forKey: viewModel.status.id)
         rowHeightCache.setValue(height, forKey: viewModel.statusModel.id.description)
         
-        print("计算")
-        print(height)
-        
-        // 5.返回行高
         return height
     }
 }

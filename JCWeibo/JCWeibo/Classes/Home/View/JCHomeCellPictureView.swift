@@ -128,8 +128,6 @@ extension JCHomeCellPictureView: UICollectionViewDelegate {
     }
 }
 
-
-
 // MAKR: - 自定义配图Cell
 class JCHomePictureCell: UICollectionViewCell {
     var url: NSURL? {

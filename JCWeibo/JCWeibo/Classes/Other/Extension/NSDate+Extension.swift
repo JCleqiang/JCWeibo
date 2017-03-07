@@ -66,18 +66,9 @@ extension NSDate {
             // 6.2判断是否是昨天
             formatter.dateFormat = "昨天 HH:mm"
         }else {
-//            calendar.dateComponents(<#T##components: Set<Calendar.Component>##Set<Calendar.Component>#>, from: <#T##Date#>, to: <#T##Date#>)
-//            let comps = calendar.dateComponents(.year, from: self, to: NSDate())
-////            let comps = calendar.components(.Year, fromDate: self, toDate: NSDate(), options: NSCalendar.Options(rawValue: 0))
-//            if comps.year < 1 {
-//                // 6.3判断是否是一年以内
-//                formatter.dateFormat = "MM-dd HH:mm"
-//                
-//            }else {
-//                // 6.4判断是否是其它年
-                formatter.dateFormat = "yyyy-MM-dd HH:mm"
-//            }
+            formatter.dateFormat = "MM-dd HH:mm"
         }
+        
         // 按照指定的格式将时间格式化为字符串
         return formatter.string(from: self as Date)
     }

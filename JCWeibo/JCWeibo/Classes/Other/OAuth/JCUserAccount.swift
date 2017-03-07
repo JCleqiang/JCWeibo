@@ -31,7 +31,7 @@ class JCUserAccount: NSObject, NSCoding {
     var avatar_large: String?
     
     /// 保存模型路径
-    static var filePath: String = "account.plist".cacheDir()
+    static  var filePath: String = "account.plist".cacheDir()
     
     // MAKR: - 生命周期方法
     init(dict: [String: AnyObject]) {

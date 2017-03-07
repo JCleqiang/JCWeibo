@@ -55,7 +55,6 @@ extension JCOAuthViewController: UIWebViewDelegate {
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         
         // 1.检查是否是授权回调页, 如果是授权回调页, 那么不用显示
-        // 1.1取出当前请求的URL
         guard let urlStr = request.url?.absoluteString else {
             closeBtnClick()
             return false
@@ -113,6 +112,7 @@ extension JCOAuthViewController: UIWebViewDelegate {
                 if account!.saveUserAccount() == false {
                     print("写入账号失败")
                     SVProgressHUD.showError(withStatus: "写入账号失败")
+                    return
                 }
                 
                 JCUserAccountViewModel.shareInstance.account = account!

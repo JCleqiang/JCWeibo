@@ -34,23 +34,14 @@ class JCHomeTableViewCell: UITableViewCell {
                 make.height.equalTo(clvSize.height)
             }
             
-            if statusViewModel?.statusModel.reposts_count == 0 {
-                retweetButton.setTitle("评论", for: .normal)
-            }else {
-                retweetButton.setTitle(statusViewModel?.statusModel.reposts_count.description, for: .normal)
-            }
+            let retweetTitle: String = (statusViewModel?.statusModel.reposts_count)! == 0 ? "转发": (statusViewModel?.statusModel.reposts_count.description)!
+            retweetButton.setTitle(retweetTitle, for: .normal)
             
-            if statusViewModel?.statusModel.comments_count == 0 {
-                commentButton.setTitle("评论", for: .normal)
-            }else {
-                commentButton.setTitle(statusViewModel?.statusModel.comments_count.description, for: .normal)
-            }
+            let commentTitle: String = (statusViewModel?.statusModel.comments_count)! == 0 ? "评论": (statusViewModel?.statusModel.comments_count.description)!
+            commentButton.setTitle(commentTitle, for: .normal)
             
-            if statusViewModel?.statusModel.attitudes_count == 0 {
-                unlikeButton.setTitle("评论", for: .normal)
-            }else {
-                unlikeButton.setTitle(statusViewModel?.statusModel.attitudes_count.description, for: .normal)
-            }
+            let unlikeTitle: String = (statusViewModel?.statusModel.attitudes_count)! == 0 ? "赞": (statusViewModel?.statusModel.attitudes_count.description)!
+            unlikeButton.setTitle(unlikeTitle, for: .normal)
         }
     }
 
@@ -58,7 +49,6 @@ class JCHomeTableViewCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        // 初始化
         setupUI()
     }
     
@@ -82,7 +72,7 @@ class JCHomeTableViewCell: UITableViewCell {
         layoutIfNeeded()
         
         // 3.返回行高
-        return bottomView.frame.maxY 
+        return bottomView.frame.maxY
     }
     
     func setupUI() {
@@ -117,7 +107,7 @@ class JCHomeTableViewCell: UITableViewCell {
         
         // 2.8底部工具条
         bottomView.snp.makeConstraints { (make) -> Void in
-            make.height.equalTo(45)
+            make.height.equalTo(44)
             make.left.equalTo(contentView.snp.left)
             make.right.equalTo(contentView.snp.right)
             make.top.equalTo(collectionView.snp.bottom).offset(10)
@@ -154,13 +144,12 @@ class JCHomeTableViewCell: UITableViewCell {
     /// 头部
     private lazy var cellTopView: JCHomeCellTopView = JCHomeCellTopView()
     /// 正文
-//    lazy var contentTextLabel =  UILabel(text: "", color: UIColor.darkGray, screenInset: 10)
     lazy var contentTextLabel: KILabel = {
         let lb = KILabel()
         lb.textColor = UIColor.darkGray
         lb.numberOfLines = 0
         lb.preferredMaxLayoutWidth = UIScreen.main.bounds.width - 2 * 10
-        lb.font = UIFont.systemFont(ofSize: 15)
+        lb.font = UIFont.systemFont(ofSize: 16)
         // 监听URL点击
         lb.urlLinkTapHandler =  { label, url, range in
             JCLog(message: "URL \(url) tapped")

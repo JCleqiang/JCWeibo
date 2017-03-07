@@ -32,8 +32,8 @@
     
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;
     
-    [self setImage:[UIImage imageNamed:@"ic_nav_title_unshow_arrow"] forState:UIControlStateNormal];
-    [self setImage:[UIImage imageNamed:@"ic_nav_title_show_arrow"] forState:UIControlStateSelected];
+    [self setImage:[UIImage imageNamed:@"ic_arrows_gray_back.png"] forState:UIControlStateNormal];
+    [self setImage:[UIImage imageNamed:@"ic_arrows_gray_come.png"] forState:UIControlStateSelected];
     
     self.layer.cornerRadius = 3;
 //    self.layer.masksToBounds = YES;

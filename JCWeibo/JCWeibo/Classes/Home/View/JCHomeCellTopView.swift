@@ -97,7 +97,7 @@ class JCHomeCellTopView: UIView {
     /// 认证图标
     private lazy var verifiedImageView = UIImageView(image: UIImage(named: "avatar_vip"))
     /// 昵称
-    private lazy var nameLabel = UILabel(text: "", fontSize:14, color: UIColor.lightGray, screenInset: 0)
+    private lazy var nameLabel = UILabel(text: "", fontSize:15, color: UIColor.darkGray, screenInset: 0)
     /// 会员图标
     private lazy var vipImageView = UIImageView(image: UIImage(named: "common_icon_membership"))
     /// 时间
