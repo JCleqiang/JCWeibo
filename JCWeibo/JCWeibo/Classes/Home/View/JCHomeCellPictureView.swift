@@ -17,7 +17,7 @@ class JCHomeCellPictureView: UICollectionView {
     var viewModel: JCStatusViewModel? {
         didSet{
             let (_, itemSize) = calculateSize()
-            // 8.3设置cell尺寸
+            // 8.3 设置cell尺寸
             if itemSize != .zero {
                 let layout = collectionViewLayout as! UICollectionViewFlowLayout
                 layout.itemSize = itemSize
@@ -112,10 +112,7 @@ extension JCHomeCellPictureView: UICollectionViewDataSource {
 
 // MAKR: - 代理方法
 extension JCHomeCellPictureView: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-         
-        // 1.获取当前点击的cell
-//        let cell = collectionView.cellForItem(at: indexPath as IndexPath) as! JCHomeCellPictureView
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) { 
         // 2.取出当前点击图片的大图URL
         let url = viewModel!.large_urls![indexPath.item] 
         

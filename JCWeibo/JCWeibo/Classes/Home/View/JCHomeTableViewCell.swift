@@ -45,7 +45,6 @@ class JCHomeTableViewCell: UITableViewCell {
         }
     }
 
-    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -65,13 +64,10 @@ class JCHomeTableViewCell: UITableViewCell {
      计算行高
      */
     func rowHeight(viewModel: JCStatusViewModel) -> CGFloat {
-        // 1.设置数据
         self.statusViewModel = viewModel
         
-        // 2.更新布局
         layoutIfNeeded()
         
-        // 3.返回行高
         return bottomView.frame.maxY
     }
     
