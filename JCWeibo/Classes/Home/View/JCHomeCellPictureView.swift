@@ -116,7 +116,7 @@ extension JCHomeCellPictureView: UICollectionViewDelegate {
         // 2.取出当前点击图片的大图URL
         let url = viewModel!.large_urls![indexPath.item] 
         
-        SDWebImageManager.shared().downloadImage(with: NSURL(string: url as String) as URL!, options: SDWebImageOptions.retryFailed, progress: { (current, total) in
+        SDWebImageManager.shared().downloadImage(with: NSURL(string: url as String) as URL?, options: SDWebImageOptions.retryFailed, progress: { (current, total) in
             //
             }) { (_, _, _, _, _) in
                 let userInfo: [String: Any] = ["urls": self.viewModel!.large_urls!, "indexPath": indexPath]
@@ -129,7 +129,7 @@ extension JCHomeCellPictureView: UICollectionViewDelegate {
 class JCHomePictureCell: UICollectionViewCell {
     var url: NSURL? {
         didSet{
-            imageView.sd_setImage(with: url as URL!)
+            imageView.sd_setImage(with: url as URL?)
         }
     }
     

@@ -4,10 +4,9 @@ PODS:
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
   - KILabel (1.0.1)
-  - QorumLogs (0.9)
-  - SDWebImage (5.9.3):
-    - SDWebImage/Core (= 5.9.3)
-  - SDWebImage/Core (5.9.3)
+  - SDWebImage (3.8.3):
+    - SDWebImage/Core (= 3.8.3)
+  - SDWebImage/Core (3.8.3)
   - SnapKit (4.2.0)
   - SVProgressHUD (2.2.5)
 
@@ -15,8 +14,7 @@ DEPENDENCIES:
   - Alamofire
   - FMDB
   - KILabel
-  - QorumLogs
-  - SDWebImage
+  - SDWebImage (~> 3.8.0)
   - SnapKit
   - SVProgressHUD
 
@@ -25,7 +23,6 @@ SPEC REPOS:
     - Alamofire
     - FMDB
     - KILabel
-    - QorumLogs
     - SDWebImage
     - SnapKit
     - SVProgressHUD
@@ -34,11 +31,10 @@ SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   KILabel: 4797807cdc0b4992dad8bf91175ddc973c3b569b
-  QorumLogs: 9a484df6973a3697ac79fe2273140fde6b36dccc
-  SDWebImage: a31ee8e90a97303529e03fb0c333eae0eacb88e9
+  SDWebImage: a72e880a8fe0f7fc31efe15aaed443c074d2a80c
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 64d1f79cf4987dc5de1073d2a80a67400954051c
+PODFILE CHECKSUM: 82c6ed87e8fefaeef5852205ba58d5960154b0d3
 
 COCOAPODS: 1.10.0

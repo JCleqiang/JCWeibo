@@ -36,7 +36,7 @@ class JCCommonWebViewController: UIViewController {
         webView.load(URLRequest(url: url))
     }
     
-    func leftback() {
+    @objc func leftback() {
         SVProgressHUD.dismiss()
         navigationController!.popViewController(animated: true)
     }

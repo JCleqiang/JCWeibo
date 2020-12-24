@@ -1,2 +1,2 @@
 # JCWeibo
-仿新浪微博- Swift
+仿新浪微博Swift版本

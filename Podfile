@@ -1,5 +1,5 @@
-# Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+
+platform :ios, '9.0'
 
 source 'https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git'         #清华镜像 
 
@@ -8,10 +8,10 @@ target 'JCWeibo' do
   use_frameworks!
 
 pod 'Alamofire'
-pod 'QorumLogs'
+# pod 'QorumLogs'
 pod 'SnapKit'
 pod 'SVProgressHUD'
-pod 'SDWebImage'
+pod 'SDWebImage', '~> 3.8.0'
 pod 'KILabel'
 pod 'FMDB'
 

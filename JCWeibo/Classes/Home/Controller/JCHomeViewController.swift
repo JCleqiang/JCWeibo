@@ -110,14 +110,14 @@ class JCHomeViewController: JCVisitorTableViewController {
         })
     }
     
-    func scanBigPicNoti(noti: Notification)  {
+    @objc func scanBigPicNoti(noti: Notification)  {
         let info: [String: Any] = noti.userInfo as! [String : Any]
         
-        let photo = KLPhotoBrowserController(imageMessageArray: info["urls"] as! [String]!, seletedIndex: (info["indexPath"] as! NSIndexPath).row)
+        let photo = KLPhotoBrowserController(imageMessageArray: info["urls"] as! [String]?, seletedIndex: (info["indexPath"] as! NSIndexPath).row)
         present(photo!, animated: false, completion: nil)
     }
     
-    func filterNavBarButtonDidClick() {
+    @objc func filterNavBarButtonDidClick() {
         let popMenuTool = JLPopMenuTool()
         popMenuTool.menuArray = ["首页", "首页", "首页", "首页", "首页", "首页"]
         popMenuTool.delegate = self

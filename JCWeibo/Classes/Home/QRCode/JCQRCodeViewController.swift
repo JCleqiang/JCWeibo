@@ -45,7 +45,7 @@ class JCQRCodeViewController: UIViewController {
      */
     private func setupScanQRCode() {
         // 1.判断输入是否能够添加到会话中
-        if !session.canAddInput(inputDevice) {
+        if !session.canAddInput(inputDevice!) {
             JCLog(message: "输入不能够添加到会话中")
             return
         }
@@ -55,7 +55,7 @@ class JCQRCodeViewController: UIViewController {
             return
         }
         // 3.将输入和输出添加到会话中
-        session.addInput(inputDevice)
+        session.addInput(inputDevice!)
         session.addOutput(output)
         
         // 4.设置输出对象能够解析的数据类型
@@ -100,8 +100,8 @@ class JCQRCodeViewController: UIViewController {
     // MAKR: - 懒加载
     /// 输入设备
     private lazy var inputDevice: AVCaptureDeviceInput? = {
-        let device = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
-        return try? AVCaptureDeviceInput(device: device)
+        let device = AVCaptureDevice.default(for: AVMediaType.video)
+        return try? AVCaptureDeviceInput(device: device!)
     }()
 
     /// 输出对象
@@ -133,7 +133,7 @@ class JCQRCodeViewController: UIViewController {
     // 如果是在懒加载中用到self一般情况下是没有循环引用的
     lazy var previewLayer: AVCaptureVideoPreviewLayer = {
         let layer = AVCaptureVideoPreviewLayer(session: self.session)
-        return layer!
+        return layer
     }()
     
     /// 专门用于保存描边的图层

@@ -52,7 +52,7 @@ class JCOAuthViewController: UIViewController {
 extension JCOAuthViewController: UIWebViewDelegate {
     /// 每次请求都会调用, 要求返回一个Bool类型的值
     /// 如果返回false代表不允许访问, 如果返回true代表允许访问
-    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
         
         // 1.检查是否是授权回调页, 如果是授权回调页, 那么不用显示
         guard let urlStr = request.url?.absoluteString else {

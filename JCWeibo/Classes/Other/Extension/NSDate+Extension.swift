@@ -21,7 +21,7 @@ extension NSDate {
         // 2.设置时间格式
         formatter.dateFormat = "EE MM dd HH:mm:ss Z yyyy"
         // 3.设置区域
-        formatter.locale = NSLocale(localeIdentifier: "en") as Locale!
+        formatter.locale = NSLocale(localeIdentifier: "en") as Locale?
         
         return formatter.date(from: str) as NSDate?
     }
@@ -43,7 +43,7 @@ extension NSDate {
         // 1.创建时间格式化
         let formatter = DateFormatter()
         // 2.设置区域
-        formatter.locale = NSLocale(localeIdentifier: "en") as Locale!
+        formatter.locale = NSLocale(localeIdentifier: "en") as Locale?
         
         // 3.创建日历类
         let calendar = NSCalendar.current

@@ -13,7 +13,7 @@ class JCHomeCellTopView: UIView {
         didSet {
             // 设置数据
             // 1.设置头像
-            iconImageView.sd_setImage(with: statusViewModel?.AvatarURL as URL!)
+            iconImageView.sd_setImage(with: statusViewModel?.AvatarURL as URL?)
             // 2.设置认证图标
             verifiedImageView.image = statusViewModel?.verifiedImage
             // 3.设置昵称

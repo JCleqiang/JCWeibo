@@ -41,17 +41,17 @@ class JCVisitorTableViewController: UITableViewController {
     }
 
     // MARK: Action
-    func loginBtnDicClick() {
+    @objc func loginBtnDicClick() {
         let oauth = JCMainNavigationController(rootViewController: JCOAuthViewController())
         present(oauth, animated: true, completion: nil)
         
     }
     
-    func registerBtnDicClick() {
+    @objc func registerBtnDicClick() {
         JCLog(message: "点击注册")
     }
     
-    func loginSuccessNoti()  {
+    @objc func loginSuccessNoti()  {
         super.loadView()
     }
      

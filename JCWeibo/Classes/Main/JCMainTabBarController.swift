@@ -43,7 +43,7 @@ class JCMainTabBarController: UITabBarController {
         navVC.tabBarItem.selectedImage = UIImage(named: imageName + "_highlighted")
         navVC.tabBarItem.title = tabBarTitle;
         
-        addChildViewController(navVC)
+        addChild(navVC)
     }
     
     // MARK: Action
