@@ -8,6 +8,7 @@
 
 import UIKit
 import SDWebImage
+import YYText
 
 protocol JCHomeTableViewCellDelegate {
     func highlightDidClik(content: String)
@@ -20,8 +21,39 @@ class JCHomeTableViewCell: UITableViewCell {
         didSet {
             // 头部
             cellTopView.statusViewModel = statusViewModel
+            
             // 设置正文
             contentTextLabel.text = statusViewModel?.statusModel.text
+            
+            // 转成可变属性字符串
+            let dict: [NSAttributedString.Key: Any] = [NSAttributedString.Key.foregroundColor: UIColor.darkGray,
+                                                       NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)]
+            let mAttributedString: NSMutableAttributedString = NSMutableAttributedString.init()
+            mAttributedString.append(NSAttributedString.init(string: statusViewModel?.statusModel.text ?? "", attributes: dict))
+            
+            let regulaStr = "((http[s]{0,1}|ftp)://[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)|(www.[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)";
+            let regex = try? NSRegularExpression.init(pattern: regulaStr, options: NSRegularExpression.Options.caseInsensitive)
+            if regex != nil {
+//                NSArray *allMatches = [regex matchesInString:mAttributedString.string options:NSMatchingReportCompletion range:NSMakeRange(0, mAttributedString.string.length)];
+                let allMatches: [NSTextCheckingResult] = (regex?.matches(in: statusViewModel?.statusModel.text ?? "",
+                                                                         options: NSRegularExpression.MatchingOptions.reportCompletion,
+                                                                         range: NSRange.init(location: 0, length: statusViewModel?.statusModel.text?.count ?? 0)))!
+                for match in allMatches {
+                    let tmp: String = statusViewModel?.statusModel.text ?? ""
+                    let substrinsgForMatch2: String = (tmp as NSString).substring(with: match.range)
+                    print("llq003: \(substrinsgForMatch2)")
+                    let one: NSMutableAttributedString = NSMutableAttributedString.init(string: substrinsgForMatch2)
+                    one.yy_font = UIFont.systemFont(ofSize: 16)
+                    one.yy_color = UIColor.systemBlue
+                    
+                    let highlight = YYTextHighlight.init()
+                    one.yy_setTextHighlight(highlight, range: one.yy_rangeOfAll())
+                    
+                    mAttributedString.replaceCharacters(in: match.range, with: one)
+                }
+            }
+            
+            contentTextLabel.attributedText = mAttributedString
             
             // 配图
             collectionView.viewModel = statusViewModel
@@ -141,12 +173,29 @@ class JCHomeTableViewCell: UITableViewCell {
     /// 头部
     private lazy var cellTopView: JCHomeCellTopView = JCHomeCellTopView()
     /// 正文
-    lazy var contentTextLabel: UILabel = {
-        let lb = UILabel()
+    lazy var contentTextLabel: YYLabel = {
+        let lb = YYLabel()
         lb.textColor = UIColor.darkGray 
         lb.numberOfLines = 0
         lb.preferredMaxLayoutWidth = UIScreen.main.bounds.width - 2 * 10
         lb.font = UIFont.systemFont(ofSize: 16)
+//        typedef void(^YYTextAction)(UIView *containerView, NSAttributedString *text, NSRange range, CGRect rect);
+//        lb.highlightTapAction = (containerView UIView, text NSAttributedString, range NSRange, rect CGRect, finished: { () -> () in {
+//
+//        })
+        
+        
+         
+//        lb.highlightTapAction =
+//        lb.highlightTapAction = ^(UIView *containerView, NSAttributedString *text, NSRange range, CGRect rect) {
+////                NSString *string = [NSString stringWithFormat:@"Tap: %@",[text.string substringWithRange:range]];
+////                NSLog(@"%@", string);
+//            };
+        // 调整行间距段落间距
+//        NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
+//        [paragraphStyle setLineSpacing:2];
+//        [paragraphStyle setParagraphSpacing:4];
+    
         // 监听URL点击
 //        lb.urlLinkTapHandler =  { label, url, range in
 //            JCLog(message: "URL \(url) tapped")

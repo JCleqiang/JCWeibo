@@ -12,7 +12,8 @@ pod 'Alamofire'
 pod 'SnapKit'
 pod 'SVProgressHUD'
 pod 'SDWebImage', '~> 3.8.0'
-pod 'KILabel'
+#pod 'KILabel'
 pod 'FMDB'
+pod 'YYText'
 
 end
