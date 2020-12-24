@@ -34,14 +34,12 @@ class JCHomeTableViewCell: UITableViewCell {
             let regulaStr = "((http[s]{0,1}|ftp)://[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)|(www.[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)";
             let regex = try? NSRegularExpression.init(pattern: regulaStr, options: NSRegularExpression.Options.caseInsensitive)
             if regex != nil {
-//                NSArray *allMatches = [regex matchesInString:mAttributedString.string options:NSMatchingReportCompletion range:NSMakeRange(0, mAttributedString.string.length)];
                 let allMatches: [NSTextCheckingResult] = (regex?.matches(in: statusViewModel?.statusModel.text ?? "",
                                                                          options: NSRegularExpression.MatchingOptions.reportCompletion,
                                                                          range: NSRange.init(location: 0, length: statusViewModel?.statusModel.text?.count ?? 0)))!
                 for match in allMatches {
                     let tmp: String = statusViewModel?.statusModel.text ?? ""
                     let substrinsgForMatch2: String = (tmp as NSString).substring(with: match.range)
-                    print("llq003: \(substrinsgForMatch2)")
                     let one: NSMutableAttributedString = NSMutableAttributedString.init(string: substrinsgForMatch2)
                     one.yy_font = UIFont.systemFont(ofSize: 16)
                     one.yy_color = UIColor.systemBlue
@@ -53,6 +51,26 @@ class JCHomeTableViewCell: UITableViewCell {
                 }
             }
             
+            let regulaStr2 = "#([^#]{1,40})#"
+            let regex2 = try? NSRegularExpression.init(pattern: regulaStr2, options: NSRegularExpression.Options.caseInsensitive)
+            if regex2 != nil {
+                let allMatches: [NSTextCheckingResult] = (regex2?.matches(in: statusViewModel?.statusModel.text ?? "",
+                                                                         options: NSRegularExpression.MatchingOptions.reportCompletion,
+                                                                         range: NSRange.init(location: 0, length: statusViewModel?.statusModel.text?.count ?? 0)))!
+                for match in allMatches {
+                    let tmp: String = statusViewModel?.statusModel.text ?? ""
+                    let substrinsgForMatch2: String = (tmp as NSString).substring(with: match.range)
+                    let one: NSMutableAttributedString = NSMutableAttributedString.init(string: substrinsgForMatch2)
+                    one.yy_font = UIFont.systemFont(ofSize: 16)
+                    one.yy_color = UIColor.systemRed
+                    
+                    let highlight = YYTextHighlight.init()
+                    one.yy_setTextHighlight(highlight, range: one.yy_rangeOfAll())
+                    
+                    mAttributedString.replaceCharacters(in: match.range, with: one)
+                }
+            }
+             
             contentTextLabel.attributedText = mAttributedString
             
             // 配图
