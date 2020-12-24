@@ -9,8 +9,8 @@
 import UIKit
 import SVProgressHUD
 
-let JC_App_Key = "3454167829"
-let JC_App_Secret = "fd09872f720a728e757410c1b9a66b88"
+let JC_App_Key = "3409459236"
+let JC_App_Secret = "7435c6c91b8c14b616e5b0d7f5f6e44e"
 let JC_Redirect_uri = "http://www.qq.com"
 
 class JCOAuthViewController: UIViewController {
@@ -96,7 +96,7 @@ extension JCOAuthViewController: UIWebViewDelegate {
      授权
      */
     private func loadAccessToken(code: String){
-        
+        // 根据授权码code获取token
         JCUserAccountViewModel.shareInstance.loadAccessToken(code: code, finished: { (account, error) -> () in 
             
             // 2.授权成功, 获取用户信息

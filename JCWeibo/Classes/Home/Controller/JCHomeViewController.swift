@@ -12,14 +12,11 @@ import SVProgressHUD
 class JCHomeViewController: JCVisitorTableViewController {
     /// 缓存行高字典(key就是微博ID, value就是当前微博的行高)
     lazy var rowHeightCache: NSMutableDictionary = {
-        /*
-         NSCache和字典差不错, 也是通过key/value的形式保存数据
-         */
         var cache = NSMutableDictionary()
-//        cache.countLimit = 30
-        
+ 
         return cache
     }()
+     
     
     /// 保存所有微博数据
     var statusViewModels: [JCStatusViewModel]? {
@@ -61,6 +58,8 @@ class JCHomeViewController: JCVisitorTableViewController {
         tableView.register(JCHomeTableViewRepostCell.self, forCellReuseIdentifier: JCHomeTableViewRepostCell.identifier())
         tableView.register(JCHomeTableViewNormalCell.self, forCellReuseIdentifier: JCHomeTableViewNormalCell.identifier())
         tableView.separatorStyle = .none
+        tableView.estimatedRowHeight = 100
+        tableView.rowHeight = UITableView.automaticDimension
         
         tableView.mj_header = JCRefreshHeader(refreshingBlock: {
             let since_id = self.statusViewModels?.first?.statusModel.id ?? 0
@@ -99,24 +98,34 @@ class JCHomeViewController: JCVisitorTableViewController {
                 self.tableView.mj_footer.endRefreshing()
                 
                 var models = [JCStatusViewModel]()
+                
+                if array == nil {
+                    SVProgressHUD.showInfo(withStatus: "没有更多微博")
+                    return
+                }
+                
+                
                 for dict in array! {
                     let statusModel = JCStatusModel(dict: dict as [String : AnyObject])
                     let viewModel = JCStatusViewModel(statusModel: statusModel)
                     models.append(viewModel)
                 }
-                
+                 
                 self.statusViewModels = self.statusViewModels! + models
             })
         })
     }
     
+    // MARK: 通知
     @objc func scanBigPicNoti(noti: Notification)  {
         let info: [String: Any] = noti.userInfo as! [String : Any]
         
         let photo = KLPhotoBrowserController(imageMessageArray: info["urls"] as! [String]?, seletedIndex: (info["indexPath"] as! NSIndexPath).row)
+        photo?.modalPresentationStyle = UIModalPresentationStyle.fullScreen;
         present(photo!, animated: false, completion: nil)
     }
     
+    // MARK: 事件
     @objc func filterNavBarButtonDidClick() {
         let popMenuTool = JLPopMenuTool()
         popMenuTool.menuArray = ["首页", "首页", "首页", "首页", "首页", "首页"]
@@ -158,7 +167,6 @@ extension JCHomeViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifier, for: indexPath) as! JCHomeTableViewCell
         
         // 2.设置数据
-        
         cell.statusViewModel = viewModel
         
         cell.myDelegate = self

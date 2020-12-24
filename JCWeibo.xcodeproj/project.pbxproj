@@ -212,7 +212,6 @@
 		2B46A10E1E66DEF100EB8534 /* QRCode */ = {
 			isa = PBXGroup;
 			children = (
-				2B4B21CA1E66A07000B6909F /* Compose */,
 				2B46A10F1E66DF0000EB8534 /* JCQRCodeViewController.swift */,
 				2B46A1111E66DF5500EB8534 /* JCQRCodeViewController.xib */,
 			);
@@ -276,7 +275,6 @@
 			isa = PBXGroup;
 			children = (
 				2B4B21C71E66A07000B6909F /* Controller */,
-				2B4B21C81E66A07000B6909F /* Model */,
 				2B4B21C91E66A07000B6909F /* View */,
 				2B46A1211E66FCEA00EB8534 /* Common.swift */,
 			);
@@ -292,50 +290,11 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		2B4B21C81E66A07000B6909F /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		2B4B21C91E66A07000B6909F /* View */ = {
 			isa = PBXGroup;
 			children = (
 				2B4B21F71E66B3C100B6909F /* JCVisitorView.swift */,
 				2B4B22111E66C6A800B6909F /* NSFilterNavBarButton */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		2B4B21CA1E66A07000B6909F /* Compose */ = {
-			isa = PBXGroup;
-			children = (
-				2B4B21CB1E66A07000B6909F /* Controller */,
-				2B4B21CC1E66A07000B6909F /* Model */,
-				2B4B21CD1E66A07000B6909F /* View */,
-			);
-			name = Compose;
-			path = ../../Compose;
-			sourceTree = "<group>";
-		};
-		2B4B21CB1E66A07000B6909F /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		2B4B21CC1E66A07000B6909F /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		2B4B21CD1E66A07000B6909F /* View */ = {
-			isa = PBXGroup;
-			children = (
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -748,7 +707,7 @@
 				TargetAttributes = {
 					F7A42F121E669E37006593A2 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = MECC7AD486;
+						DevelopmentTeam = 7YDX583K64;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -1021,7 +980,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = MECC7AD486;
+				DEVELOPMENT_TEAM = 7YDX583K64;
 				INFOPLIST_FILE = JCWeibo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1038,7 +997,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = MECC7AD486;
+				DEVELOPMENT_TEAM = 7YDX583K64;
 				INFOPLIST_FILE = JCWeibo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

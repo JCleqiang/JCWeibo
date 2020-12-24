@@ -32,7 +32,7 @@ class JCHomeCellTopView: UIView {
     }
 
     override init(frame: CGRect) {
-        super.init(frame: frame)
+        super.init(frame: frame) 
         
         // 初始化
         setupUI()

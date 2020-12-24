@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+ 
 class JCStatusViewModel: NSObject {
     /// 数据模型
     var statusModel: JCStatusModel
@@ -59,7 +59,7 @@ class JCStatusViewModel: NSObject {
     
     /// 来源
     var sourceStr: String? {
-        let text: String = statusModel.source!
+        let text: String = statusModel.source ?? ""
         
         if text != "" {
             let text = text as NSString
@@ -70,7 +70,7 @@ class JCStatusViewModel: NSObject {
             return "来自: " + result 
         }
         
-        return nil
+        return text
     }
     
     /// 当前微博所有配图URL数组

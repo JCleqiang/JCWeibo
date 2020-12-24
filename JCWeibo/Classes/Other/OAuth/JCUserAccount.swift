@@ -8,6 +8,7 @@
 
 import UIKit
 
+@objcMembers
 class JCUserAccount: NSObject, NSCoding {
     /// 用于调用access_token，接口获取授权后的access token。
     var access_token: String?
@@ -36,7 +37,7 @@ class JCUserAccount: NSObject, NSCoding {
     // MAKR: - 生命周期方法
     init(dict: [String: AnyObject]) {
         super.init()
-        print(dict)
+        print("llq001: \(dict)")
         setValuesForKeys(dict)
     }
     

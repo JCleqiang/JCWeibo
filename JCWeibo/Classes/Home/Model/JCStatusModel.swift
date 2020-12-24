@@ -8,6 +8,7 @@
 
 import UIKit
 
+@objcMembers
 class JCStatusModel: NSObject {
     /// 微博创建时间
     var created_at: String?

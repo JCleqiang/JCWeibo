@@ -8,7 +8,6 @@
 
 import UIKit
 import SDWebImage
-import KILabel
 
 protocol JCHomeTableViewCellDelegate {
     func highlightDidClik(content: String)
@@ -77,13 +76,15 @@ class JCHomeTableViewCell: UITableViewCell {
         contentView.addSubview(contentTextLabel)
         contentView.addSubview(collectionView)
         contentView.addSubview(bottomView)
+        
         bottomView.addSubview(retweetButton)
         bottomView.addSubview(commentButton)
         bottomView.addSubview(unlikeButton)
         
         // 2.布局子控件
         cellTopView.snp.makeConstraints { (make) in
-            make.top.left.right.equalTo(contentView)
+            make.top.left.equalTo(contentView)
+            make.top.width.equalTo(UIScreen.main.bounds.width)
             make.height.equalTo(66)
         }
         
@@ -140,19 +141,19 @@ class JCHomeTableViewCell: UITableViewCell {
     /// 头部
     private lazy var cellTopView: JCHomeCellTopView = JCHomeCellTopView()
     /// 正文
-    lazy var contentTextLabel: KILabel = {
-        let lb = KILabel()
-        lb.textColor = UIColor.darkGray
+    lazy var contentTextLabel: UILabel = {
+        let lb = UILabel()
+        lb.textColor = UIColor.darkGray 
         lb.numberOfLines = 0
         lb.preferredMaxLayoutWidth = UIScreen.main.bounds.width - 2 * 10
         lb.font = UIFont.systemFont(ofSize: 16)
         // 监听URL点击
-        lb.urlLinkTapHandler =  { label, url, range in
-            JCLog(message: "URL \(url) tapped")
-            if (self.myDelegate != nil) {
-                self.myDelegate!.highlightDidClik(content: url)
-            }
-        }
+//        lb.urlLinkTapHandler =  { label, url, range in
+//            JCLog(message: "URL \(url) tapped")
+//            if (self.myDelegate != nil) {
+//                self.myDelegate!.highlightDidClik(content: url)
+//            }
+//        }
     
         return lb
     }()

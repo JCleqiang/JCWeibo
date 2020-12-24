@@ -56,24 +56,30 @@ class JCHomeCellPictureView: UICollectionView {
         let screenWidth = Int(UIScreen.main.bounds.width)
         let cellWidth = (screenWidth - (col + 1) * (Int)(kHomeCellMargin)) / col
         let cellHeight = cellWidth
+        
         // 2.计算容器和cell的尺寸
         if count == 0 {
             return (.zero, .zero)
-        }else if count == 1 {
+        }
+        
+        if count == 1 {
             // 2.1判断是否是一张
             let key = viewModel!.thumbnail_urls!.first!.absoluteString
             let image = SDWebImageManager.shared().imageCache.imageFromDiskCache(forKey: key)
             
             guard let img = image else {
-                return (.zero, .zero)
+                let size = CGSize(width: cellWidth, height: cellWidth)
+                 
+                return (size, size)
             }
             
             let width = img.size.width * UIScreen.main.nativeScale
             let height = img.size.height * UIScreen.main.nativeScale
             let size = CGSize(width: width, height: height)
-            return (size, size)
-            
-        }else if  count == 4 {
+            return (size, size) 
+        }
+        
+        if count == 4 {
             // 2.2判断是否是四张
             row = 2
             col = row
@@ -81,15 +87,16 @@ class JCHomeCellPictureView: UICollectionView {
             let width = col * cellWidth + (col - 1) * (Int)(kHomeCellMargin)
             let height = width
             return(CGSize(width: width, height: height), CGSize(width: cellWidth, height: cellHeight))
-        }else {
-            // 2.3其它张(九宫格)
-            col = 3
-            row = (count - 1) / 3 + 1
-            // 宽度 = 列数 * cell宽度 + (列数- 1) * 间隙
-            let width = col * cellWidth + (col - 1) * (Int)(kHomeCellMargin)
-            let height = row * cellHeight + (row - 1) * (Int)(kHomeCellMargin)
-            return (CGSize(width: width, height: height), CGSize(width: cellWidth, height: cellHeight))
         }
+        
+        // 2.3其它张(九宫格)
+        col = 3
+        row = (count - 1) / 3 + 1
+        // 宽度 = 列数 * cell宽度 + (列数- 1) * 间隙
+        let width = col * cellWidth + (col - 1) * (Int)(kHomeCellMargin)
+        let height = row * cellHeight + (row - 1) * (Int)(kHomeCellMargin)
+        
+        return (CGSize(width: width, height: height), CGSize(width: cellWidth, height: cellHeight))
     }
 }
 

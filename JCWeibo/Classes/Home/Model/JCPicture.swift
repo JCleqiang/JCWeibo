@@ -8,6 +8,7 @@
 
 import UIKit
 
+@objcMembers
 class JCPicture: NSObject {
 
     /// 配图字符串地址

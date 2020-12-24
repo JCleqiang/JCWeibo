@@ -8,6 +8,7 @@
 
 import UIKit
 
+@objcMembers
 class JCUserModel: NSObject {
     /// 用户昵称
     var screen_name: String?

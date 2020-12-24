@@ -68,11 +68,15 @@ class JCUserAccountViewModel: NSObject {
         
         JCNetworking.sharedInstance.postRequest(urlString: path, params: parameters, success: { (response) in
             
-            print("授权数据: ")
-            print(response)
+            print("授权数据: \(response)")
             
             // 3.2字典转换模型
             let account = JCUserAccount(dict: response)
+            if account.access_token == nil {
+                account.access_token = response["access_token"] as? String
+                account.expires_in = response["expires_in"] as? Double ?? 0
+                account.uid = response["uid"] as? String
+            }
             
             finished(account, nil)
             

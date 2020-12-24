@@ -37,5 +37,11 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>如果不允许，您将无法扫描药品条形码以添加药品，无法修改个人中心自己的头像信息，也无法在聊天中使用拍照功能。</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>如果不允许，您将无法保存图片到相册中。</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>如果不允许，您将无法在聊天中发送相册里的图片。</string>
 </dict>
 </plist>

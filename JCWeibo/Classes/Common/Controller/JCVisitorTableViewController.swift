@@ -15,17 +15,19 @@ class JCVisitorTableViewController: UITableViewController {
     var visitorView: JCVisitorView?
     
     override func loadView() {
+        //
         if isUserLogin {
             super.loadView()
+            return
         }
-        else {
-            visitorView = JCVisitorView()
-            
-            visitorView?.loginBtn.addTarget(self, action: #selector(loginBtnDicClick), for: .touchUpInside)
-            visitorView?.registerBtn.addTarget(self, action: #selector(registerBtnDicClick), for: .touchUpInside)
-            
-            view = visitorView
-        } 
+        
+        //
+        visitorView = JCVisitorView()
+        
+        visitorView?.loginBtn.addTarget(self, action: #selector(loginBtnDicClick), for: .touchUpInside)
+        visitorView?.registerBtn.addTarget(self, action: #selector(registerBtnDicClick), for: .touchUpInside)
+        
+        view = visitorView
     }
     
     deinit {

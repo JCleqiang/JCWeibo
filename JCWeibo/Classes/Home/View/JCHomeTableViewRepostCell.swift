@@ -6,8 +6,7 @@
 //  Copyright © 2017年 com.leqiang222. All rights reserved.
 //
 
-import UIKit
-import KILabel
+import UIKit 
 
 class JCHomeTableViewRepostCell: JCHomeTableViewCell {
 
@@ -36,19 +35,19 @@ class JCHomeTableViewRepostCell: JCHomeTableViewCell {
 
         return view
     }()
-    lazy var forwradTextLabel: KILabel = {
-        let lb = KILabel()
+    lazy var forwradTextLabel: UILabel = {
+        let lb = UILabel()
         lb.textColor = UIColor.darkGray
         lb.numberOfLines = 0
         lb.font = UIFont.systemFont(ofSize: 15)
         lb.preferredMaxLayoutWidth = UIScreen.main.bounds.width - 2 * 10
         
-        lb.urlLinkTapHandler =  { label, url, range in
-            JCLog(message: "URL \(url) tapped")
-            if (self.myDelegate != nil) {
-                self.myDelegate!.highlightDidClik(content: url)
-            }
-        }
+//        lb.urlLinkTapHandler =  { label, url, range in
+//            JCLog(message: "URL \(url) tapped")
+//            if (self.myDelegate != nil) {
+//                self.myDelegate!.highlightDidClik(content: url)
+//            }
+//        }
         
         return lb
     }()
