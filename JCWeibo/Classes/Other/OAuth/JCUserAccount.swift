@@ -45,26 +45,28 @@ class JCUserAccount: NSObject, NSCoding {
         //
     }
     
+    
 
     /// 从文件中读取一个模型时调用
     required init?(coder aDecoder: NSCoder) {
-        access_token = aDecoder.decodeObject(forKey: "access_token") as? String
+        // 语法：使用 Swift3.0 #keyPath() 写法，可以避免我们因为拼写错误而引发问题。
+        access_token = aDecoder.decodeObject(forKey: #keyPath(JCUserAccount.access_token)) as? String
 //        expires_in = aDecoder.decodeObject(forKey: "expires_in") as! Double
-        uid = aDecoder.decodeObject(forKey: "uid") as? String
-        expires_Date = aDecoder.decodeObject(forKey: "expires_Date") as? NSDate
-        screen_name = aDecoder.decodeObject(forKey: "screen_name") as? String
-        avatar_large = aDecoder.decodeObject(forKey: "avatar_large") as? String
+        uid = aDecoder.decodeObject(forKey: #keyPath(JCUserAccount.uid)) as? String
+        expires_Date = aDecoder.decodeObject(forKey: #keyPath(JCUserAccount.expires_Date)) as? NSDate
+        screen_name = aDecoder.decodeObject(forKey: #keyPath(JCUserAccount.screen_name)) as? String
+        avatar_large = aDecoder.decodeObject(forKey: #keyPath(JCUserAccount.avatar_large)) as? String
     }
     
     /// 将对象写入文件时调用
     func encode(with aCoder:NSCoder) {
 //    func encodeWithCoder(aCoder: NSCoder) { 
-        aCoder.encode(access_token, forKey: "access_token")
-        aCoder.encode(expires_in, forKey: "expires_in")
-        aCoder.encode(uid, forKey: "uid")
-        aCoder.encode(expires_Date, forKey: "expires_Date")
-        aCoder.encode(screen_name, forKey: "screen_name")
-        aCoder.encode(avatar_large, forKey: "avatar_large") 
+        aCoder.encode(access_token, forKey: #keyPath(JCUserAccount.access_token))
+        aCoder.encode(expires_in, forKey: #keyPath(JCUserAccount.expires_in))
+        aCoder.encode(uid, forKey: #keyPath(JCUserAccount.uid))
+        aCoder.encode(expires_Date, forKey: #keyPath(JCUserAccount.expires_Date))
+        aCoder.encode(screen_name, forKey: #keyPath(JCUserAccount.screen_name))
+        aCoder.encode(avatar_large, forKey: #keyPath(JCUserAccount.avatar_large))
     }
 
     override var description: String {

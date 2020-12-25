@@ -54,7 +54,7 @@ extension JCOAuthViewController: UIWebViewDelegate {
     /// 如果返回false代表不允许访问, 如果返回true代表允许访问
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
         
-        // 1.检查是否是授权回调页, 如果是授权回调页, 那么不用显示
+        // 1.回调页守护
         guard let urlStr = request.url?.absoluteString else {
             closeBtnClick()
             return false
@@ -73,8 +73,8 @@ extension JCOAuthViewController: UIWebViewDelegate {
                 return false
             }
             // 2.2截取字符串
-            let code = urlStr.substring(from: range.upperBound)
-            
+            let code = urlStr.substring(from: range.upperBound) 
+             
             // 2.3利用RequestToken换取AccessToken
             loadAccessToken(code: code)
         }
@@ -110,11 +110,9 @@ extension JCOAuthViewController: UIWebViewDelegate {
                 
                 // 2.保存授权模型
                 if account!.saveUserAccount() == false {
-                    print("写入账号失败")
                     SVProgressHUD.showError(withStatus: "写入账号失败")
                     return
-                }
-                
+                } 
                 JCUserAccountViewModel.shareInstance.account = account!
                 
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: JCLoginSuccessNotification), object: false)

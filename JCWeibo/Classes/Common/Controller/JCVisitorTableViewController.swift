@@ -11,7 +11,7 @@ import UIKit
 class JCVisitorTableViewController: UITableViewController {
     
     /// 定义便利记录当前用户登录状态
-    var isUserLogin = JCUserAccountViewModel.shareInstance.isUserLogin()
+    var isUserLogin = JCUserAccountViewModel.shareInstance.isUserLogin
     var visitorView: JCVisitorView?
     
     override func loadView() {

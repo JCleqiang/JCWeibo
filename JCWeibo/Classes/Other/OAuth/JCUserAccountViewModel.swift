@@ -25,12 +25,28 @@ class JCUserAccountViewModel: NSObject {
     
     /// 记录授权模型是否过期
     var isExpires: Bool {
-        if account?.expires_Date?.compare(NSDate() as Date) == ComparisonResult.orderedAscending  {
+        let date: Date = Date.init()
+        if account?.expires_Date?.compare(date) == ComparisonResult.orderedAscending {
             return true
         }
         return false
     }
     
+    /**
+     判断用户是否登录
+     */
+    var isUserLogin: Bool {
+        if account == nil {
+            return false
+        }
+        
+        if account!.access_token == nil {
+            return false
+        }
+        
+        return true
+    }
+     
     override init() {
         super.init()
         
@@ -47,13 +63,6 @@ class JCUserAccountViewModel: NSObject {
     }
     
     /**
-     判断用户是否登录
-     */
-    func isUserLogin() -> Bool {
-        return account != nil
-    }
-    
-    /**
      利用RequestToken换取AccessToken
      
      - parameter code: RequestToken
@@ -64,12 +73,9 @@ class JCUserAccountViewModel: NSObject {
                           "client_secret": JC_App_Secret,
                           "grant_type": "authorization_code",
                           "code": code,
-                          "redirect_uri": JC_Redirect_uri]
+                          "redirect_uri": JC_Redirect_uri] 
         
         JCNetworking.sharedInstance.postRequest(urlString: path, params: parameters, success: { (response) in
-            
-            print("授权数据: \(response)")
-            
             // 3.2字典转换模型
             let account = JCUserAccount(dict: response)
             if account.access_token == nil {
