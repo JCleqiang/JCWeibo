@@ -73,7 +73,9 @@ class JCUserAccountViewModel: NSObject {
                           "client_secret": JC_App_Secret,
                           "grant_type": "authorization_code",
                           "code": code,
-                          "redirect_uri": JC_Redirect_uri] 
+                          "redirect_uri": JC_Redirect_uri]
+        
+        JCNetworking.sharedInstance.postRequest(urlString: <#T##String#>, params: <#T##[String : Any]#>, success: <#T##([String : AnyObject]) -> ()#>, failture: <#T##(Error) -> ()#>)
         
         JCNetworking.sharedInstance.postRequest(urlString: path, params: parameters, success: { (response) in
             // 3.2字典转换模型

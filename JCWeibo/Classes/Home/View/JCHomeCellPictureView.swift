@@ -41,12 +41,9 @@ class JCHomeCellPictureView: UICollectionView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MAKR: - 外部控制方法
-    /**
-     计算配图容器和cell的宽高
-     
-     - returns: 第一个是容器的宽高, 第二个是cell的宽高
-     */
+    // MAKR: - 外部控制方法 
+    /// 计算配图容器和cell的宽高
+    /// - Returns: 第一个是容器的宽高, 第二个是cell的宽高
     func calculateSize() ->(CGSize, CGSize) {
         // 1.取出配图的个数
         let count = viewModel?.thumbnail_urls?.count ?? 0

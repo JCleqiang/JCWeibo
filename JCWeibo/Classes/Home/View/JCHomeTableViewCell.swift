@@ -134,7 +134,7 @@ class JCHomeTableViewCell: UITableViewCell {
         // 2.布局子控件
         cellTopView.snp.makeConstraints { (make) in
             make.top.left.equalTo(contentView)
-            make.top.width.equalTo(UIScreen.main.bounds.width)
+            make.width.equalTo(UIScreen.main.bounds.width)
             make.height.equalTo(66)
         }
         
@@ -196,24 +196,7 @@ class JCHomeTableViewCell: UITableViewCell {
         lb.textColor = UIColor.darkGray 
         lb.numberOfLines = 0
         lb.preferredMaxLayoutWidth = UIScreen.main.bounds.width - 2 * 10
-        lb.font = UIFont.systemFont(ofSize: 16)
-//        typedef void(^YYTextAction)(UIView *containerView, NSAttributedString *text, NSRange range, CGRect rect);
-//        lb.highlightTapAction = (containerView UIView, text NSAttributedString, range NSRange, rect CGRect, finished: { () -> () in {
-//
-//        })
-        
-        
-         
-//        lb.highlightTapAction =
-//        lb.highlightTapAction = ^(UIView *containerView, NSAttributedString *text, NSRange range, CGRect rect) {
-////                NSString *string = [NSString stringWithFormat:@"Tap: %@",[text.string substringWithRange:range]];
-////                NSLog(@"%@", string);
-//            };
-        // 调整行间距段落间距
-//        NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
-//        [paragraphStyle setLineSpacing:2];
-//        [paragraphStyle setParagraphSpacing:4];
-    
+        lb.font = UIFont.systemFont(ofSize: 16) 
         // 监听URL点击
 //        lb.urlLinkTapHandler =  { label, url, range in
 //            JCLog(message: "URL \(url) tapped")

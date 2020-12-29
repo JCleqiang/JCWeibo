@@ -18,9 +18,9 @@ class JCNetworking: NSObject  {
 }
 
 extension JCNetworking {
-         
+    
+    
     func getRequest(urlString: String, params : [String : Any], success : @escaping (_ response : [String : AnyObject])->(), failture : @escaping (_ error : Error)->()) {
-        
         Alamofire.request(JC_Base_URL + urlString, method: .get, parameters: params).responseJSON { (response) in
             //当请求后response是我们自定义的，这个变量用于接受服务器响应的信息
                 switch response.result {
@@ -34,8 +34,7 @@ extension JCNetworking {
                     failture(error)
                     print("error:\(error)")
                 }
-        }
-        
+        } 
     }
     
     //MARK: - POST 请求

@@ -14,13 +14,12 @@ class JCHomeTableViewRepostCell: JCHomeTableViewCell {
     // 注意: 子类重写父类的属性, 不会覆盖父类的操作
     override var statusViewModel: JCStatusViewModel? {
         didSet{
-            
             // 1.设置转发正文
             let name = statusViewModel?.statusModel.retweeted_status?.userModel?.screen_name ?? ""
             let text = statusViewModel?.statusModel.retweeted_status?.text ?? ""
             forwradTextLabel.text  = "@" + name + ": " + text
             
-//            // 更新配图布局
+            // 更新配图布局
             collectionView.snp.updateConstraints { (make) -> Void in
                 let offsetY = ((statusViewModel?.thumbnail_urls!.count)! > 0) ? kHomeCellMargin : 0
                 make.top.equalTo(forwradTextLabel.snp.bottom).offset(offsetY)
@@ -35,6 +34,7 @@ class JCHomeTableViewRepostCell: JCHomeTableViewCell {
 
         return view
     }()
+    
     lazy var forwradTextLabel: UILabel = {
         let lb = UILabel()
         lb.textColor = UIColor.darkGray
@@ -83,4 +83,5 @@ class JCHomeTableViewRepostCell: JCHomeTableViewCell {
 }
 
 extension JCHomeTableViewRepostCell {
-    }
+    
+}

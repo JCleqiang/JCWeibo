@@ -16,11 +16,10 @@ class JCHomeViewController: JCVisitorTableViewController {
  
         return cache
     }()
-     
     
     /// 保存所有微博数据
     var statusViewModels: [JCStatusViewModel]? {
-        didSet{
+        didSet {
             tableView.reloadData()
         }
     }
@@ -78,8 +77,8 @@ class JCHomeViewController: JCVisitorTableViewController {
                     let viewModel = JCStatusViewModel(statusModel: statusModel)
                     models.append(viewModel)
                 }
-                
-                SVProgressHUD.showInfo(withStatus: "更新\(models.count)条微博")
+                 
+                SVProgressHUD.showSuccess(withStatus: "更新\(models.count)条微博")
 
                 guard let hadModels = self.statusViewModels else {
                     self.statusViewModels = models
@@ -100,7 +99,7 @@ class JCHomeViewController: JCVisitorTableViewController {
                 var models = [JCStatusViewModel]()
                 
                 if array == nil {
-                    SVProgressHUD.showInfo(withStatus: "没有更多微博")
+                    SVProgressHUD.show(withStatus: "没有更多微博")
                     return
                 }
                 
@@ -136,12 +135,12 @@ class JCHomeViewController: JCVisitorTableViewController {
     @objc private func leftBtnClick() {
         JCLog(message: "-----")
     }
+    
     @objc private func rightBtnClick() {
         let qrCode = JCMainNavigationController(rootViewController: JCQRCodeViewController())
         present(qrCode, animated: true, completion: nil)
     }
 
-    
     lazy var filterNavBarButton: NSFilterNavBarButton = {
         let filterNavBarButton = NSFilterNavBarButton()
         filterNavBarButton.addTarget(self, action: #selector(filterNavBarButtonDidClick), for:.touchUpInside)
